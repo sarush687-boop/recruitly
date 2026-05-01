@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Recruity — Find Candidates Before They Apply Anywhere</title>
+
+<meta name="description" content="Recruity monitors Reddit 24/7 for people actively seeking work in roles you're hiring for. Get instant Telegram alerts when a job seeker posts. From $19/month or $69 one-time.">
+<meta name="keywords" content="reddit talent sourcing, find candidates reddit, reddit job seeker monitor, passive candidate sourcing, reddit hiring tool, telegram hiring alerts, reddit talent search">
+<meta name="author" content="Recruity">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://recruity.pages.dev/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://recruity.pages.dev/">
+<meta property="og:title" content="Recruity — Find Candidates Before They Apply Anywhere">
+<meta property="og:description" content="Recruity monitors Reddit 24/7 for people actively looking for work in roles you're hiring for. Get instant Telegram alerts. From $19/month.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Recruity — Find Candidates Before They Apply">
+<meta name="twitter:description" content="Reddit talent monitor with instant Telegram alerts. Spot job seekers before anyone else.">
+<meta name="theme-color" content="#2563eb">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#faf9f7;--white:#fff;--paper:#f4f2ee;--stone:#e8e4dc;
+  --mist:#d4cfc6;--ash:#a09890;--slate:#6b6560;--charcoal:#3a3530;--ink:#0d0b09;
+  --accent:#1d6ad4;--as:#ddeeff;--am:#5ca0f0;
+  --green:#2d7a4f;--gs:#e0f0e8;--red:#c04040;--rs:#f5e0e0;
+  --teal:#0e7c6e;--ts:#d4f0ec;
+  --sh:0 2px 8px rgba(26,23,20,.06),0 1px 2px rgba(26,23,20,.04);
+  --sh-md:0 8px 32px rgba(26,23,20,.08),0 2px 8px rgba(26,23,20,.04);
+  --sh-lg:0 20px 60px rgba(26,23,20,.10),0 4px 16px rgba(26,23,20,.05);
+}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{background:var(--cream);color:var(--charcoal);font-family:'Geist',sans-serif;font-size:14px;line-height:1.6;min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--paper)}::-webkit-scrollbar-thumb{background:var(--mist);border-radius:2px}
+
+/* ── NAV ── */
+nav{height:58px;display:flex;align-items:center;border-bottom:1px solid var(--stone);background:rgba(250,249,247,.88);backdrop-filter:blur(16px);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1100px;margin:0 auto;padding:0 32px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;color:#fff;font-size:14px;font-style:italic}
+.logo-word{font-family:'Instrument Serif',serif;font-size:18px;color:var(--ink);letter-spacing:-.02em}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-link{font-size:13px;color:var(--slate);text-decoration:none;padding:6px 12px;border-radius:7px;transition:all .15s}
+.nav-link:hover{color:var(--charcoal);background:var(--paper)}
+.nav-cta{background:var(--ink);color:var(--cream);padding:8px 18px;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;transition:all .15s;letter-spacing:-.01em}
+.nav-cta:hover{background:#1a1714;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.15)}
+
+/* ── HERO ── */
+.hero{padding:100px 32px 80px;position:relative;overflow:hidden}
+.hero-dots{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,var(--mist) 1px,transparent 1px);background-size:28px 28px;opacity:.45;mask-image:radial-gradient(ellipse 80% 70% at 50% 0%,black 30%,transparent 100%)}
+.hero-glow{position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(29,106,212,.07) 0%,transparent 65%);pointer-events:none}
+.hero-in{max-width:780px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;background:var(--white);border:1px solid var(--stone);border-radius:20px;padding:5px 14px 5px 8px;margin-bottom:28px;font-size:12px;color:var(--slate);font-weight:500;box-shadow:var(--sh)}
+.eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:glow 2s ease-in-out infinite}
+@keyframes glow{0%,100%{opacity:.6;transform:scale(.9)}50%{opacity:1;transform:scale(1.1)}}
+h1{font-family:'Instrument Serif',serif;font-size:clamp(44px,7vw,80px);line-height:1.04;letter-spacing:-.03em;color:var(--ink);margin-bottom:20px}
+h1 em{color:var(--accent);font-style:italic}
+.hero-sub{font-size:17px;color:var(--ash);max-width:500px;margin:0 auto 40px;line-height:1.75;font-weight:300}
+.hero-btns{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.btn-primary{display:inline-flex;align-items:center;gap:7px;background:var(--ink);color:var(--cream);padding:13px 28px;border-radius:10px;font-family:'Geist',sans-serif;font-weight:500;font-size:15px;text-decoration:none;transition:all .2s;letter-spacing:-.01em;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.18)}
+.btn-ghost{display:inline-flex;align-items:center;gap:7px;background:transparent;color:var(--slate);padding:13px 24px;border-radius:10px;font-family:'Geist',sans-serif;font-weight:400;font-size:15px;text-decoration:none;transition:all .15s;border:1px solid var(--stone)}
+.btn-ghost:hover{border-color:var(--mist);color:var(--charcoal);background:var(--paper)}
+.hero-note{font-size:12px;color:var(--mist);text-align:center}
+
+/* ── DEMO CARD ── */
+.demo-wrap{max-width:860px;margin:56px auto 0;padding:0 32px;position:relative;z-index:1}
+.demo-card{background:var(--white);border:1px solid var(--stone);border-radius:16px;overflow:hidden;box-shadow:var(--sh-lg)}
+.demo-bar{height:38px;background:var(--paper);border-bottom:1px solid var(--stone);display:flex;align-items:center;padding:0 14px;gap:7px}
+.demo-dot{width:10px;height:10px;border-radius:50%}
+.demo-url{flex:1;background:var(--stone);height:20px;border-radius:5px;max-width:260px;margin-left:8px}
+.demo-body{padding:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.demo-stat{background:var(--paper);border:1px solid var(--stone);border-radius:9px;padding:16px}
+.demo-n{font-family:'Instrument Serif',serif;font-size:30px;line-height:1;letter-spacing:-.03em}
+.demo-l{font-size:11px;color:var(--ash);margin-top:3px;font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+.demo-alerts{grid-column:1/-1;display:flex;flex-direction:column;gap:8px}
+.demo-alert{background:var(--white);border:1px solid var(--stone);border-radius:8px;padding:14px;display:flex;align-items:flex-start;gap:12px;position:relative;overflow:hidden}
+.demo-alert::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.da-hire::before{background:var(--green)}
+.da-seek::before{background:var(--accent)}
+.da-free::before{background:#b07020}
+.demo-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;flex-shrink:0;margin-top:1px;white-space:nowrap}
+.db-hire{background:var(--gs);color:var(--green);border:1px solid rgba(45,122,79,.15)}
+.db-seek{background:var(--as);color:var(--accent);border:1px solid rgba(29,106,212,.15)}
+.db-free{background:#f5ead0;color:#b07020;border:1px solid rgba(176,112,32,.15)}
+.demo-text{font-size:13px;color:var(--charcoal);line-height:1.5;flex:1}
+.demo-sub{font-size:11px;font-family:'Geist Mono',monospace;color:var(--ash);margin-top:4px}
+
+/* ── MARQUEE ── */
+.marquee-wrap{overflow:hidden;border-top:1px solid var(--stone);border-bottom:1px solid var(--stone);padding:12px 0;background:var(--paper);margin-top:60px}
+.marquee-track{display:flex;animation:marquee 32s linear infinite;width:max-content}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mq-item{display:flex;align-items:center;gap:7px;padding:0 28px;font-size:12px;color:var(--slate);white-space:nowrap;font-weight:500}
+.mq-dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+
+/* ── SECTION ── */
+.section{padding:88px 32px}
+.section-in{max-width:1100px;margin:0 auto}
+.section-mid{max-width:680px;margin:0 auto;text-align:center}
+.s-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--ash);margin-bottom:12px}
+.s-title{font-family:'Instrument Serif',serif;font-size:clamp(30px,4vw,48px);color:var(--ink);letter-spacing:-.03em;line-height:1.08;margin-bottom:14px}
+.s-title em{color:var(--accent);font-style:italic}
+.s-sub{font-size:15px;color:var(--ash);line-height:1.75;font-weight:300}
+
+/* ── HOW IT WORKS ── */
+.hiw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+.hiw-card{background:var(--white);border:1px solid var(--stone);border-radius:14px;padding:28px}
+.hiw-num{font-family:'Instrument Serif',serif;font-size:48px;color:var(--paper);line-height:1;margin-bottom:16px;letter-spacing:-.04em;user-select:none}
+.hiw-title{font-weight:600;font-size:15px;color:var(--ink);margin-bottom:8px;letter-spacing:-.01em}
+.hiw-desc{font-size:13px;color:var(--ash);line-height:1.65}
+
+/* ── BOT COMMANDS ── */
+.commands-section{background:var(--ink);padding:88px 32px}
+.commands-in{max-width:860px;margin:0 auto}
+.commands-title{font-family:'Instrument Serif',serif;font-size:clamp(28px,4vw,44px);color:var(--cream);letter-spacing:-.03em;line-height:1.1;margin-bottom:8px}
+.commands-sub{font-size:15px;color:rgba(250,249,247,.45);font-weight:300;margin-bottom:44px;line-height:1.7}
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cmd-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:20px;transition:all .2s}
+.cmd-card:hover{background:rgba(255,255,255,.09);border-color:rgba(29,106,212,.4)}
+.cmd-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.cmd-name{font-family:'Geist Mono',monospace;font-size:15px;font-weight:500;color:var(--cream);background:rgba(29,106,212,.2);border:1px solid rgba(29,106,212,.35);padding:3px 12px;border-radius:6px;letter-spacing:.01em}
+.cmd-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(250,249,247,.3);padding:2px 8px;border:1px solid rgba(255,255,255,.08);border-radius:20px}
+.cmd-desc{font-size:13px;color:rgba(250,249,247,.5);line-height:1.6;margin-bottom:10px}
+.cmd-example{font-size:12px;font-family:'Geist Mono',monospace;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:7px;padding:10px 14px;color:rgba(250,249,247,.65);line-height:1.65}
+.cmd-example .label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(250,249,247,.3);display:block;margin-bottom:6px}
+.cmd-step{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px}
+.cmd-step:last-child{margin-bottom:0}
+.cmd-step-num{width:18px;height:18px;border-radius:5px;background:rgba(29,106,212,.25);color:var(--am);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Geist Mono',monospace}
+.cmd-step-text{font-size:12px;color:rgba(250,249,247,.6);line-height:1.55}
+.cmd-step-text code{font-family:'Geist Mono',monospace;background:rgba(255,255,255,.1);padding:1px 5px;border-radius:4px;color:rgba(250,249,247,.85)}
+
+/* ── FLOW ── */
+.flow{display:flex;align-items:center;gap:0;margin-top:52px;flex-wrap:wrap}
+.flow-step{flex:1;min-width:160px;text-align:center;padding:24px 16px;position:relative}
+.flow-step::after{content:'→';position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--mist)}
+.flow-step:last-child::after{display:none}
+.flow-icon{width:48px;height:48px;border-radius:12px;background:var(--white);border:1px solid var(--stone);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 12px;box-shadow:var(--sh)}
+.flow-title{font-weight:600;font-size:13px;color:var(--charcoal);margin-bottom:4px}
+.flow-desc{font-size:12px;color:var(--ash);line-height:1.55}
+
+/* ── FEATURES ── */
+.feats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--stone);border:1px solid var(--stone);border-radius:16px;overflow:hidden;margin-top:52px}
+.feat{background:var(--white);padding:28px;transition:background .15s}
+.feat:hover{background:var(--paper)}
+.feat-icon{width:38px;height:38px;border-radius:9px;background:var(--paper);border:1px solid var(--stone);display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:16px;transition:all .2s}
+.feat:hover .feat-icon{background:var(--as);border-color:rgba(29,106,212,.2)}
+.feat-title{font-weight:600;font-size:14px;color:var(--charcoal);margin-bottom:6px;letter-spacing:-.01em}
+.feat-desc{font-size:13px;color:var(--ash);line-height:1.65}
+
+/* ── SP BAR ── */
+.sp-section{padding:40px 32px;background:var(--ink);border-top:1px solid rgba(255,255,255,.06)}
+.sp-inner{max-width:900px;margin:0 auto}
+.sp-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.07);border-radius:14px;overflow:hidden}
+.sp-stat{padding:28px 20px;background:rgba(255,255,255,.03);text-align:center}
+.sp-stat-n{font-family:'Instrument Serif',serif;font-size:38px;color:var(--cream);letter-spacing:-.04em;line-height:1}
+.sp-stat-l{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(250,249,247,.35);margin-top:7px;line-height:1.4}
+
+/* ── TESTIMONIALS ── */
+.t-section{padding:88px 32px;background:var(--white);border-top:1px solid var(--stone)}
+.t-inner{max-width:1060px;margin:0 auto}
+.t-hd{text-align:center;margin-bottom:52px}
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
+.t-card{background:var(--paper);border:1px solid var(--stone);border-radius:14px;padding:24px;display:flex;flex-direction:column}
+.t-card-dark{background:var(--ink);border-color:rgba(255,255,255,.08)}
+.t-card-accent{background:linear-gradient(135deg,var(--as) 0%,rgba(29,106,212,.06) 100%);border:1px solid rgba(29,106,212,.2)}
+.t-stars{font-size:14px;color:#f59e0b;margin-bottom:14px;letter-spacing:1px}
+.t-body{font-size:14px;color:var(--charcoal);line-height:1.75;margin-bottom:18px;font-weight:400;flex:1}
+.t-body-dark{color:rgba(250,249,247,.78);font-weight:300}
+.t-footer{display:flex;align-items:center;gap:10px;border-top:1px solid var(--stone);padding-top:14px;margin-top:auto;flex-wrap:wrap}
+.t-footer-dark{border-top-color:rgba(255,255,255,.08)}
+.t-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;font-family:'Geist Mono',monospace;flex-shrink:0}
+.t-info{flex:1;min-width:0}
+.t-name{font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.t-name-dark{color:var(--cream)}
+.t-role{font-size:11px;color:var(--ash)}
+.t-role-dark{color:rgba(250,249,247,.38)}
+.t-badge{font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+
+/* ── PRICING ── */
+.pricing-section{padding:88px 32px;background:var(--paper);border-top:1px solid var(--stone);border-bottom:1px solid var(--stone)}
+.pricing-in{max-width:900px;margin:0 auto;text-align:center}
+.pricing-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:40px auto 0;max-width:860px}
+.pricing-card{border-radius:20px;padding:40px;position:relative;overflow:hidden;box-shadow:0 24px 80px rgba(13,11,9,.12)}
+.pricing-card.dark{background:var(--ink)}
+.pricing-card.light{background:var(--white);border:1px solid var(--stone)}
+.pc-popular{position:absolute;top:20px;right:20px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:20px}
+.pricing-card.dark::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--am),var(--accent));background-size:200%;animation:shimmer 3s linear infinite}
+.pricing-card.light::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--mist),var(--stone),var(--mist));background-size:200%}
+@keyframes shimmer{0%{background-position:0%}100%{background-position:200%}}
+.pc-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+.dark .pc-label{color:rgba(250,249,247,.35)}
+.light .pc-label{color:var(--ash)}
+.pc-price{font-family:'Instrument Serif',serif;font-size:64px;letter-spacing:-.04em;line-height:1}
+.dark .pc-price{color:var(--cream)}
+.light .pc-price{color:var(--ink)}
+.pc-price sup{font-size:26px;vertical-align:super;letter-spacing:0}
+.pc-per{font-size:13px;margin-bottom:24px;margin-top:6px}
+.dark .pc-per{color:rgba(250,249,247,.4)}
+.light .pc-per{color:var(--ash)}
+.pc-divider{height:1px;margin:20px 0}
+.dark .pc-divider{background:rgba(255,255,255,.08)}
+.light .pc-divider{background:var(--stone)}
+.pc-feats{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;text-align:left}
+.pc-feat{display:flex;align-items:center;gap:10px;font-size:13px}
+.dark .pc-feat{color:rgba(250,249,247,.75)}
+.light .pc-feat{color:var(--charcoal)}
+.pc-check{width:18px;height:18px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0}
+.dark .pc-check{background:rgba(45,122,79,.2);border:1px solid rgba(45,122,79,.3);color:#6fcf97}
+.light .pc-check{background:rgba(45,122,79,.12);border:1px solid rgba(45,122,79,.2);color:var(--green)}
+.pc-btn{display:block;width:100%;padding:14px;border-radius:10px;text-align:center;font-family:'Geist',sans-serif;font-weight:600;font-size:14px;text-decoration:none;transition:all .15s;letter-spacing:-.01em}
+.pc-btn.accent{background:var(--accent);color:#fff;box-shadow:0 4px 16px rgba(29,106,212,.35)}
+.pc-btn.accent:hover{background:#1558b0;transform:translateY(-1px);box-shadow:0 8px 28px rgba(29,106,212,.45)}
+.pc-btn.outline{background:transparent;color:var(--charcoal);border:1.5px solid var(--stone)}
+.pc-btn.outline:hover{border-color:var(--mist);background:var(--paper);transform:translateY(-1px)}
+.pc-note{font-size:11px;margin-top:10px;line-height:1.6}
+.dark .pc-note{color:rgba(250,249,247,.2)}
+.light .pc-note{color:var(--ash)}
+.pc-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(45,122,79,.1);border:1px solid rgba(45,122,79,.2);color:var(--green);font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;margin-bottom:20px}
+
+/* ── ACTIVATE ── */
+.activate-section{padding:72px 32px;border-top:1px solid var(--stone)}
+.activate-in{max-width:680px;margin:0 auto;text-align:center}
+.act-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px}
+.act-card{text-align:center}
+.act-num{width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--cream);display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:20px;font-style:italic;margin:0 auto 14px;box-shadow:var(--sh)}
+.act-title{font-weight:600;font-size:14px;color:var(--ink);margin-bottom:7px;letter-spacing:-.01em}
+.act-desc{font-size:13px;color:var(--ash);line-height:1.65}
+.act-desc code{background:var(--paper);border:1px solid var(--stone);padding:1px 6px;border-radius:4px;font-family:'Geist Mono',monospace;font-size:12px;color:var(--charcoal)}
+
+/* ── FAQ ── */
+.faq-section{padding:88px 32px;background:var(--white);border-top:1px solid var(--stone)}
+.faq-in{max-width:780px;margin:0 auto}
+.faq-header{text-align:center;margin-bottom:52px}
+.faq-list{display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:1px solid var(--stone)}
+.faq-item:first-of-type{border-top:1px solid var(--stone)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0;cursor:pointer;background:none;border:none;text-align:left;font-family:'Geist',sans-serif;font-size:15px;font-weight:600;color:var(--ink);letter-spacing:-.01em;line-height:1.4}
+.faq-q:hover{color:var(--accent)}
+.faq-icon{width:28px;height:28px;border-radius:7px;background:var(--paper);border:1px solid var(--stone);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:var(--ash);transition:all .2s}
+.faq-item.open .faq-icon{background:var(--as);border-color:rgba(29,106,212,.2);color:var(--accent);transform:rotate(45deg)}
+.faq-a{display:none;padding:0 0 22px;font-size:14px;color:var(--ash);line-height:1.75;max-width:680px}
+.faq-item.open .faq-a{display:block}
+.faq-a code{font-family:'Geist Mono',monospace;background:var(--paper);border:1px solid var(--stone);padding:1px 6px;border-radius:4px;font-size:13px;color:var(--charcoal)}
+.faq-cta{text-align:center;margin-top:44px;padding-top:44px;border-top:1px solid var(--stone)}
+.faq-cta p{font-size:14px;color:var(--ash);margin-bottom:16px}
+
+/* ── FINAL CTA ── */
+.final-cta{padding:96px 32px;text-align:center;border-top:1px solid var(--stone)}
+.final-in{max-width:560px;margin:0 auto}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:var(--cream);padding:0}
+.foot-top{max-width:1100px;margin:0 auto;padding:56px 32px 40px;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px}
+.foot-brand .foot-logo{font-family:'Instrument Serif',serif;font-size:22px;color:var(--cream);letter-spacing:-.02em;margin-bottom:10px}
+.foot-brand p{font-size:13px;color:rgba(250,249,247,.38);line-height:1.7;max-width:220px;margin-bottom:20px}
+.foot-socials{display:flex;gap:10px}
+.foot-social{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(250,249,247,.5);text-decoration:none;transition:all .15s;font-size:15px}
+.foot-social:hover{border-color:rgba(29,106,212,.5);color:var(--am);background:rgba(29,106,212,.08)}
+.foot-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(250,249,247,.28);margin-bottom:16px}
+.foot-col a{display:block;font-size:13px;color:rgba(250,249,247,.5);text-decoration:none;margin-bottom:9px;transition:color .15s}
+.foot-col a:hover{color:var(--cream)}
+.fp-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block;margin-right:7px}
+.foot-divider{border:none;border-top:1px solid rgba(255,255,255,.07);margin:0 32px}
+.foot-bottom{max-width:1100px;margin:0 auto;padding:20px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.foot-bottom-left{font-size:12px;color:rgba(250,249,247,.25)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fu{animation:fadeUp .45s ease both}
+.d1{animation-delay:.07s}.d2{animation-delay:.14s}.d3{animation-delay:.22s}.d4{animation-delay:.30s}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .t-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .hiw-grid,.cmd-grid,.feats-grid{grid-template-columns:1fr}
+  .feats-grid{gap:0}
+  .flow{flex-direction:column}
+  .flow-step::after{content:'↓';right:auto;top:auto;bottom:-14px}
+  .nav-links .nav-link{display:none}
+  .hero,.section,.faq-section,.activate-section,.pricing-section,.commands-section{padding-left:20px;padding-right:20px}
+  .t-section{padding:60px 20px}
+  .sp-section{padding:32px 20px}
+  .demo-wrap{padding:0 16px}
+  .foot-top{grid-template-columns:1fr 1fr;gap:32px}
+  .foot-brand{grid-column:1/-1}
+  .sp-stats-grid{grid-template-columns:repeat(2,1fr)}
+  .sp-stat-n{font-size:30px}
+}
+@media(max-width:600px){
+  .act-grid{grid-template-columns:1fr}
+  .pricing-cards{grid-template-columns:1fr}
+  .pricing-card{padding:36px 28px}
+  .t-grid{grid-template-columns:1fr}
+  .t-badge{display:none}
+}
+@media(max-width:480px){
+  .foot-top{grid-template-columns:1fr}
+  .sp-stats-grid{grid-template-columns:1fr 1fr}
+  .sp-stat{padding:16px 12px}
+  .sp-stat-n{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="/" aria-label="Recruity home">
+      <div class="logo-mark" aria-hidden="true">R</div>
+      <span class="logo-word">Recruity</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="#how">How it works</a>
+      <a class="nav-link" href="#commands">Bot commands</a>
+      <a class="nav-link" href="#pricing">Pricing</a>
+      <a class="nav-link" href="#faq">FAQ</a>
+      <a class="nav-cta" href="dashboard.html">Open Dashboard →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="hero-dots" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-in">
+    <div class="eyebrow fu"><span class="eyebrow-dot" aria-hidden="true"></span> Reddit talent monitor · Hourly scans · Instant Telegram alerts</div>
+    <h1 id="hero-heading" class="fu d1">Your next hire is on<br>Reddit right now.<br><em>Looking for work.</em></h1>
+    <p class="hero-sub fu d2">Recruity monitors Reddit 24/7 for people actively seeking work in roles you're hiring for — and alerts you on Telegram before anyone else reaches out.</p>
+    <div class="hero-btns fu d3">
+      <a class="btn-primary" href="#pricing">See plans →</a>
+      <a class="btn-ghost" href="dashboard.html">Open Dashboard</a>
+    </div>
+    <p class="hero-note fu d4">$19/month or $69 one-time · License key delivered instantly</p>
+  </div>
+</section>
+
+<!-- DEMO CARD -->
+<div class="demo-wrap reveal" aria-label="Recruity dashboard preview">
+  <div class="demo-card">
+    <div class="demo-bar" aria-hidden="true">
+      <div class="demo-dot" style="background:#f87171"></div>
+      <div class="demo-dot" style="background:#fbbf24"></div>
+      <div class="demo-dot" style="background:#34d399"></div>
+      <div class="demo-url"></div>
+    </div>
+    <div class="demo-body">
+      <div class="demo-stat"><div class="demo-n" style="color:var(--green)">9</div><div class="demo-l">Available for hire</div></div>
+      <div class="demo-stat"><div class="demo-n" style="color:var(--accent)">14</div><div class="demo-l">Actively seeking</div></div>
+      <div class="demo-stat"><div class="demo-n" style="color:#b07020">6</div><div class="demo-l">Freelancers</div></div>
+      <div class="demo-alerts">
+        <div class="demo-alert da-hire">
+          <span class="demo-badge db-hire">🙋 Available for hire</span>
+          <div><div class="demo-text">"3 years of React + TypeScript, just went freelance. Looking for contract work, happy to do part-time or project-based. DM me."</div><div class="demo-sub">r/forhire · u/devmark · 2 hours ago</div></div>
+        </div>
+        <div class="demo-alert da-seek">
+          <span class="demo-badge db-seek">🔍 Seeking work</span>
+          <div><div class="demo-text">"Laid off from my UX role last month. 5 years of Figma, design systems, and user research. Open to full-time or contract."</div><div class="demo-sub">r/UXDesign · u/sarahd_ux · 4 hours ago</div></div>
+        </div>
+        <div class="demo-alert da-free">
+          <span class="demo-badge db-free">💼 Freelancer</span>
+          <div><div class="demo-text">"Anyone need a data analyst? I do dashboards, SQL, and Python. Built out reporting for 12 companies in the last 2 years."</div><div class="demo-sub">r/freelance · u/analyst_kai · 6 hours ago</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="mq-item"><span class="mq-dot"></span> Available for hire detection</div>
+    <div class="mq-item"><span class="mq-dot"></span> Job seeker monitoring</div>
+    <div class="mq-item"><span class="mq-dot"></span> Freelancer sourcing</div>
+    <div class="mq-item"><span class="mq-dot"></span> Telegram alerts</div>
+    <div class="mq-item"><span class="mq-dot"></span> AI intent classification</div>
+    <div class="mq-item"><span class="mq-dot"></span> Multi-source Reddit fetch</div>
+    <div class="mq-item"><span class="mq-dot"></span> Hourly cron scans</div>
+    <div class="mq-item"><span class="mq-dot"></span> Outreach suggestions</div>
+    <div class="mq-item"><span class="mq-dot"></span> Available for hire detection</div>
+    <div class="mq-item"><span class="mq-dot"></span> Job seeker monitoring</div>
+    <div class="mq-item"><span class="mq-dot"></span> Freelancer sourcing</div>
+    <div class="mq-item"><span class="mq-dot"></span> Telegram alerts</div>
+    <div class="mq-item"><span class="mq-dot"></span> AI intent classification</div>
+    <div class="mq-item"><span class="mq-dot"></span> Multi-source Reddit fetch</div>
+    <div class="mq-item"><span class="mq-dot"></span> Hourly cron scans</div>
+    <div class="mq-item"><span class="mq-dot"></span> Outreach suggestions</div>
+  </div>
+</div>
+
+<!-- SOCIAL PROOF BAR -->
+<section class="sp-section" aria-label="Stats">
+  <div class="sp-inner">
+    <div class="sp-stats-grid">
+      <div class="sp-stat"><div class="sp-stat-n">24/7</div><div class="sp-stat-l">Reddit monitoring</div></div>
+      <div class="sp-stat"><div class="sp-stat-n" style="color:var(--am)">4+</div><div class="sp-stat-l">Reddit sources tapped</div></div>
+      <div class="sp-stat"><div class="sp-stat-n" style="color:#6fcf97">AI</div><div class="sp-stat-l">Intent classification</div></div>
+      <div class="sp-stat"><div class="sp-stat-n">&lt;1h</div><div class="sp-stat-l">Time to alert</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how" aria-labelledby="how-heading">
+  <div class="section-in">
+    <div class="section-mid reveal">
+      <div class="s-label">How it works</div>
+      <h2 class="s-title" id="how-heading">Set up once.<br><em>Get candidates forever.</em></h2>
+      <p class="s-sub">Three steps and Reddit starts working as your sourcing engine.</p>
+    </div>
+    <div class="hiw-grid reveal">
+      <div class="hiw-card">
+        <div class="hiw-num" aria-hidden="true">01</div>
+        <h3 class="hiw-title">Tell the bot what you're hiring for</h3>
+        <p class="hiw-desc">Open the Telegram bot, send <code style="font-family:'Geist Mono';background:var(--paper);padding:1px 5px;border-radius:3px">/monitor</code>, and type the role — e.g. "React developer" or "UX designer". Done in 30 seconds.</p>
+      </div>
+      <div class="hiw-card">
+        <div class="hiw-num" aria-hidden="true">02</div>
+        <h3 class="hiw-title">Recruity scans Reddit every hour</h3>
+        <p class="hiw-desc">Across 4 Reddit sources in parallel — posts, subreddits, RSS, and search. AI reads each post and flags only real job seekers. Job listings are ignored.</p>
+      </div>
+      <div class="hiw-card">
+        <div class="hiw-num" aria-hidden="true">03</div>
+        <h3 class="hiw-title">Get alerted + reach out first</h3>
+        <p class="hiw-desc">Telegram ping with the candidate's situation, subreddit, and a ready-to-use outreach message. Open the dashboard for the full feed.</p>
+      </div>
+    </div>
+    <div class="flow reveal" role="list" aria-label="Recruity flow">
+      <div class="flow-step" role="listitem"><div class="flow-icon">💬</div><div class="flow-title">Telegram Bot</div><div class="flow-desc">Set the role you're hiring for</div></div>
+      <div class="flow-step" role="listitem"><div class="flow-icon">🔍</div><div class="flow-title">Reddit Scan</div><div class="flow-desc">4 sources, every hour</div></div>
+      <div class="flow-step" role="listitem"><div class="flow-icon">🤖</div><div class="flow-title">Groq AI</div><div class="flow-desc">Classifies intent, filters noise</div></div>
+      <div class="flow-step" role="listitem"><div class="flow-icon">📊</div><div class="flow-title">Google Sheets</div><div class="flow-desc">Every alert saved automatically</div></div>
+      <div class="flow-step" role="listitem"><div class="flow-icon">🔔</div><div class="flow-title">You get alerted</div><div class="flow-desc">Telegram + Dashboard</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOT COMMANDS -->
+<section class="commands-section" id="commands" aria-labelledby="commands-heading">
+  <div class="commands-in">
+    <div class="s-label" style="color:rgba(250,249,247,.3);margin-bottom:12px">Telegram bot commands</div>
+    <h2 class="commands-title" id="commands-heading">Everything you can tell<br>the bot to do</h2>
+    <p class="commands-sub">Open the bot on Telegram and use these commands. That's the entire interface.</p>
+    <div class="cmd-grid">
+      <div class="cmd-card">
+        <div class="cmd-top"><span class="cmd-name">/start</span><span class="cmd-tag">First thing to do</span></div>
+        <p class="cmd-desc">Introduces the bot, shows all commands, and prompts you to activate your license key.</p>
+        <div class="cmd-example"><span class="label">What to type</span>/start</div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-top"><span class="cmd-name">/monitor</span><span class="cmd-tag">Most important</span></div>
+        <p class="cmd-desc">Adds a role to watch. Bot builds smart search keywords automatically.</p>
+        <div class="cmd-example">
+          <span class="label">Step by step</span>
+          <div class="cmd-step"><div class="cmd-step-num">1</div><div class="cmd-step-text">Type <code>/monitor</code> and send</div></div>
+          <div class="cmd-step"><div class="cmd-step-num">2</div><div class="cmd-step-text">Bot asks "Which role?" → type e.g. <code>React developer</code></div></div>
+          <div class="cmd-step"><div class="cmd-step-num">3</div><div class="cmd-step-text">Bot asks for subreddits → type <code>/skip</code> to search all Reddit</div></div>
+          <div class="cmd-step"><div class="cmd-step-num">4</div><div class="cmd-step-text">Done ✓ Monitor is now active</div></div>
+        </div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-top"><span class="cmd-name">/test</span><span class="cmd-tag">Use after setup</span></div>
+        <p class="cmd-desc">Runs a manual Reddit check right now — don't wait for the hourly cron. Verify it's working instantly.</p>
+        <div class="cmd-example"><span class="label">What to type</span>/test<div style="margin-top:8px;font-size:11px;color:rgba(250,249,247,.35)">Takes ~10–15 seconds. Bot replies with results or "no new posts found".</div></div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-top"><span class="cmd-name">/list</span><span class="cmd-tag">Check active</span></div>
+        <p class="cmd-desc">Shows all roles you're currently monitoring.</p>
+        <div class="cmd-example"><span class="label">Example reply</span>"1. React developer<br>2. UX designer"</div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-top"><span class="cmd-name">/dashboard</span><span class="cmd-tag">Get your ID</span></div>
+        <p class="cmd-desc">Bot replies with your unique Telegram Chat ID — needed to log into the dashboard.</p>
+        <div class="cmd-example">
+          <span class="label">Step by step</span>
+          <div class="cmd-step"><div class="cmd-step-num">1</div><div class="cmd-step-text">Type <code>/dashboard</code> and send</div></div>
+          <div class="cmd-step"><div class="cmd-step-num">2</div><div class="cmd-step-text">Bot replies with your Chat ID e.g. <code>1234567890</code></div></div>
+          <div class="cmd-step"><div class="cmd-step-num">3</div><div class="cmd-step-text">Paste it into the <a href="dashboard.html" style="color:var(--am)">Dashboard login</a></div></div>
+        </div>
+      </div>
+      <div class="cmd-card">
+        <div class="cmd-top"><span class="cmd-name">/stop</span><span class="cmd-tag">Pause all</span></div>
+        <p class="cmd-desc">Stops all active monitors. Use when you've filled a role or need a break.</p>
+        <div class="cmd-example"><span class="label">What to type</span>/stop<div style="margin-top:8px;font-size:11px;color:rgba(250,249,247,.35)">Re-add roles with /monitor whenever you're ready to hire again.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" aria-labelledby="features-heading">
+  <div class="section-in">
+    <div class="section-mid reveal">
+      <div class="s-label">What you get</div>
+      <h2 class="s-title" id="features-heading">Built for teams that<br><em>want to hire fast.</em></h2>
+    </div>
+    <div class="feats-grid reveal">
+      <div class="feat"><div class="feat-icon">🙋</div><h3 class="feat-title">Available for hire</h3><p class="feat-desc">Catches people explicitly advertising their skills — "open to work", "looking for clients", "just went freelance."</p></div>
+      <div class="feat"><div class="feat-icon">🔍</div><h3 class="feat-title">Active job seekers</h3><p class="feat-desc">Finds people in job search mode — posting resumes, asking for referrals, or sharing their experience.</p></div>
+      <div class="feat"><div class="feat-icon">💼</div><h3 class="feat-title">Freelancer sourcing</h3><p class="feat-desc">Surfaces independent contractors actively hunting for new projects in your domain.</p></div>
+      <div class="feat"><div class="feat-icon">🤖</div><h3 class="feat-title">AI noise filtering</h3><p class="feat-desc">Groq AI reads every post and discards job listings, spam, and off-topic mentions. Only real candidates get through.</p></div>
+      <div class="feat"><div class="feat-icon">💬</div><h3 class="feat-title">Outreach suggestions</h3><p class="feat-desc">Every alert includes a short, human-sounding message you can send to the candidate. Just paste and go.</p></div>
+      <div class="feat"><div class="feat-icon">🔔</div><h3 class="feat-title">Instant Telegram alerts</h3><p class="feat-desc">Candidates hit your Telegram within the hour. No dashboard to babysit, no daily email digest to skim.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="t-section" aria-labelledby="testimonials-heading">
+  <div class="t-inner">
+    <div class="t-hd reveal">
+      <div class="s-label">Early users</div>
+      <h2 class="s-title" id="testimonials-heading">Founders and teams<br><em>hiring smarter on Reddit</em></h2>
+      <p class="s-sub">Real people finding real candidates before anyone else.</p>
+    </div>
+    <div class="t-grid reveal">
+      <div class="t-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-body">"Found a <strong>senior React dev</strong> on r/forhire within 6 hours of setting this up. He wasn't on LinkedIn, wasn't on job boards. Just posted on Reddit that he was open to contract work. We hired him that week."</p>
+        <div class="t-footer">
+          <div class="t-avatar" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">MK</div>
+          <div class="t-info"><div class="t-name">Marcus K.</div><div class="t-role">CTO, early-stage SaaS · 🇩🇪</div></div>
+          <div class="t-badge" style="background:var(--gs);border:1px solid rgba(45,122,79,.2);color:var(--green)">🙋 Hired</div>
+        </div>
+      </div>
+      <div class="t-card t-card-dark">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-body t-body-dark">"We were paying $400/month for a job board that got us zero applications for our data role. <strong style="color:var(--cream)">Recruity found 3 qualified people in the first 48 hours.</strong> The outreach message feature is genuinely useful."</p>
+        <div class="t-footer t-footer-dark">
+          <div class="t-avatar" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)">SR</div>
+          <div class="t-info"><div class="t-name t-name-dark">Shreya R.</div><div class="t-role t-role-dark">Head of Product, analytics co. · 🇮🇳</div></div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-body">"As a solo founder I can't afford a recruiter. This is the closest thing I've found. I get pinged when someone matching my role posts on Reddit — I reply within the hour. <strong>3 contractors hired this quarter.</strong>"</p>
+        <div class="t-footer">
+          <div class="t-avatar" style="background:linear-gradient(135deg,#10b981,#059669)">TL</div>
+          <div class="t-info"><div class="t-name">Tom L.</div><div class="t-role">Solo founder · 🇺🇸</div></div>
+          <div class="t-badge" style="background:#f5ead0;border:1px solid rgba(176,112,32,.2);color:#b07020">Lifetime plan</div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="t-stars">★★★★☆</div>
+        <p class="t-body">"The Telegram alerts are quick and clean. Intent label, a 1-line summary, and a link to the thread. No noise. <strong>I check it like Slack.</strong> Found two copywriters and a video editor in the first two weeks."</p>
+        <div class="t-footer">
+          <div class="t-avatar" style="background:linear-gradient(135deg,#f97316,#ea580c)">JA</div>
+          <div class="t-info"><div class="t-name">James A.</div><div class="t-role">Growth, media startup · 🇬🇧</div></div>
+          <div class="t-badge" style="background:var(--as);border:1px solid rgba(29,106,212,.2);color:var(--accent)">💼 Freelancers</div>
+        </div>
+      </div>
+      <div class="t-card t-card-dark">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-body t-body-dark">"Set it up on Sunday. By Tuesday I had <strong style="color:var(--cream)">8 alerts for UX designers</strong> — 3 of them were genuinely interesting. Interviewed one on Wednesday. It would have taken me a week of manual Reddit browsing to find that."</p>
+        <div class="t-footer t-footer-dark">
+          <div class="t-avatar" style="background:linear-gradient(135deg,#ec4899,#be185d)">NP</div>
+          <div class="t-info"><div class="t-name t-name-dark">Nadia P.</div><div class="t-role t-role-dark">Design lead, product co. · 🇫🇷</div></div>
+        </div>
+      </div>
+      <div class="t-card t-card-accent">
+        <div style="font-size:28px;margin-bottom:12px">🎯</div>
+        <p style="font-size:15px;font-weight:600;color:var(--charcoal);margin-bottom:8px">Built on the same engine as Compeddit</p>
+        <p style="font-size:13px;color:var(--ash);line-height:1.65;margin-bottom:20px">Recruity is built by the same team as Compeddit — Reddit competitor intelligence trusted by 500+ founders. Same infrastructure, same reliability.</p>
+        <a href="https://compeddit.pages.dev" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:var(--ink);color:var(--cream);padding:8px 16px;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none">See Compeddit →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing" aria-labelledby="pricing-heading">
+  <div class="pricing-in reveal">
+    <div class="s-label">Pricing</div>
+    <h2 class="s-title" id="pricing-heading">Simple pricing.<br><em>Full access either way.</em></h2>
+    <p class="s-sub">No feature gates. No seat limits. Pick what works for you.</p>
+    <div class="pricing-cards">
+      <div class="pricing-card light">
+        <div class="pc-label">Recruity Lifetime</div>
+        <div class="pc-price"><sup>$</sup>69</div>
+        <div class="pc-per">one-time payment · yours forever</div>
+        <div class="pc-badge">✦ Best value</div>
+        <div class="pc-divider"></div>
+        <ul class="pc-feats">
+          <li class="pc-feat"><span class="pc-check">✓</span>Everything in Pro</li>
+          <li class="pc-feat"><span class="pc-check">✓</span>Pay once, never again</li>
+          <li class="pc-feat"><span class="pc-check">✓</span>Lifetime access &amp; updates</li>
+          <li class="pc-feat"><span class="pc-check">✓</span>Monitor unlimited roles</li>
+          <li class="pc-feat"><span class="pc-check">✓</span>Reddit scanned every hour</li>
+          <li class="pc-feat"><span class="pc-check">✓</span>Instant Telegram alerts</li>
+          <li class="pc-feat"><span class="pc-check">✓</span>Full analytics dashboard</li>
+        </ul>
+        <a class="pc-btn outline" href="https://recruity.gumroad.com/l/lifetime" target="_blank" rel="noopener">Get Lifetime — $69 →</a>
+        <p class="pc-note">One payment via Gumroad · License key emailed instantly</p>
+      </div>
+      <div class="pricing-card dark">
+        <div class="pc-popular">Most popular</div>
+        <div class="pc-label">Recruity Pro</div>
+        <div class="pc-price"><sup>$</sup>19</div>
+        <div class="pc-per">per month · cancel anytime</div>
+        <div style="height:32px"></div>
+        <div class="pc-divider"></div>
+        <ul class="pc-feats">
+          <li class="pc-feat"><span class="pc-check">✓</span>Monitor unlimited roles</li>
+          <li class="pc-feat"><span class="pc-check">✓</span>Reddit scanned every hour</li>
+          <li class="pc-feat"><span class="pc-check">✓</span>Instant Telegram alerts</li>
+          <li class="pc-feat"><span class="pc-check">✓</span>AI intent classification</li>
+          <li class="pc-feat"><span class="pc-check">✓</span>AI-generated outreach messages</li>
+          <li class="pc-feat"><span class="pc-check">✓</span>Full analytics dashboard</li>
+          <li class="pc-feat"><span class="pc-check">✓</span>Subreddit targeting</li>
+        </ul>
+        <a class="pc-btn accent" href="https://recruity.gumroad.com/l/monthly" target="_blank" rel="noopener">Subscribe — $19/month →</a>
+        <p class="pc-note">Billed monthly via Gumroad · Cancel from your Gumroad account anytime</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVATE -->
+<section class="activate-section reveal" aria-labelledby="activate-heading">
+  <div class="activate-in">
+    <div class="s-label">After subscribing</div>
+    <h2 class="s-title" id="activate-heading" style="font-size:clamp(26px,3.5vw,40px)">Up and running<br><em>in 2 minutes.</em></h2>
+    <div class="act-grid">
+      <div class="act-card">
+        <div class="act-num">1</div>
+        <h3 class="act-title">Get a plan on Gumroad</h3>
+        <p class="act-desc">Click your plan → pay → Gumroad emails you a <strong>license key</strong> instantly</p>
+      </div>
+      <div class="act-card">
+        <div class="act-num">2</div>
+        <h3 class="act-title">Open the Telegram bot</h3>
+        <p class="act-desc">Find <strong>@recruity_bot</strong> on Telegram → send <code>/start</code></p>
+      </div>
+      <div class="act-card">
+        <div class="act-num">3</div>
+        <h3 class="act-title">Activate &amp; start monitoring</h3>
+        <p class="act-desc">Send <code>/activate YOUR_LICENSE_KEY</code> → verified → add your first role with <code>/monitor</code></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq" aria-labelledby="faq-heading">
+  <div class="faq-in">
+    <div class="faq-header">
+      <div class="s-label">FAQ</div>
+      <h2 class="s-title" id="faq-heading">Frequently asked<br><em>questions</em></h2>
+      <p class="s-sub">Everything you need to know. Can't find an answer? DM us.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this.parentElement)"><span>What exactly does Recruity monitor?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Recruity scans Reddit every hour looking for people who are actively seeking work in roles you specify. It detects posts where people say they're "available for hire", "open to work", "looking for clients", "just got laid off", or similar. It specifically ignores job listings — companies posting "we're hiring" — because you want candidates, not competition.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this.parentElement)"><span>How does it know who's a real job seeker vs noise?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Every post gets read by Groq's LLaMA 70B model. It classifies intent into categories: <code>available_for_hire</code>, <code>seeking_work</code>, <code>freelancer</code>, <code>new_to_field</code>, or <code>general</code>. Only the first four trigger alerts. This eliminates job listings, vague mentions, spam, and off-topic posts. You only see posts where someone is genuinely looking.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this.parentElement)"><span>How much does Recruity cost?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Two plans: <strong>Recruity Pro at $19/month</strong> (cancel anytime from Gumroad) and <strong>Recruity Lifetime at $69</strong> (one-time payment, yours forever, all future updates included). Both plans have identical features — unlimited roles, hourly scans, Telegram alerts, AI classification, and the full dashboard.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this.parentElement)"><span>Can I target specific subreddits?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Yes. When you use the <code>/monitor</code> command, after entering the role, the bot will ask if you want to target specific subreddits. You can enter ones like <code>forhire, freelance, cscareerquestions</code> or skip to search all of Reddit. Targeting specific subreddits often gets better signal — e.g. <code>r/forhire</code> is extremely active for candidates.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this.parentElement)"><span>Can I monitor multiple roles at once?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Yes — both plans support unlimited roles. Just use <code>/monitor</code> once per role. Use <code>/list</code> to see what's active. Each role gets its own keyword set automatically generated by the bot.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this.parentElement)"><span>How quickly will I get alerted?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Recruity runs an automatic scan every hour. Worst case you're notified within 60 minutes of someone posting. You can also trigger a manual scan anytime with <code>/test</code> — results come back in about 10–15 seconds.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this.parentElement)"><span>What does the outreach message look like?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Each alert includes an AI-generated outreach message tailored to the candidate's post. It's short (2 sentences), sounds human, and doesn't mention Recruity. Example: <em>"Hey, saw your post on r/forhire — we're actually looking for a React dev right now and your background sounds interesting. Would love to chat if you're open to it."</em> You can use it as-is or tweak it.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this.parentElement)"><span>Is there a free trial?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>No free tier, but the <code>/test</code> command lets you run a real Reddit scan immediately after subscribing to verify it's working. The $19/month plan cancels instantly from your Gumroad account — no emails, no support tickets. And the $69 lifetime breaks even at month 4 compared to monthly.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this.parentElement)"><span>How do I log into the dashboard?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Send <code>/dashboard</code> to the Telegram bot — it replies with your unique Chat ID (a number like <code>1234567890</code>). Go to <a href="dashboard.html" style="color:var(--accent)">dashboard.html</a>, enter that ID, and you're in. The dashboard shows all your alerts with filters, subreddit breakdown, and candidate summaries.</p></div>
+      </div>
+    </div>
+    <div class="faq-cta">
+      <p>Still have questions? Reach out directly.</p>
+      <a class="btn-ghost" href="https://x.com" target="_blank" rel="noopener">DM on X →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" aria-labelledby="cta-heading">
+  <div class="final-in reveal">
+    <div class="s-label" style="margin-bottom:16px">Ready?</div>
+    <h2 id="cta-heading" style="font-family:'Instrument Serif',serif;font-size:clamp(32px,5vw,52px);color:var(--ink);letter-spacing:-.03em;line-height:1.08;margin-bottom:14px">
+      Start finding candidates<br><em style="color:var(--accent)">on Reddit today.</em>
+    </h2>
+    <p style="font-size:15px;color:var(--ash);margin-bottom:32px;line-height:1.7;font-weight:300">$19/month or $69 one-time. Subscribe on Gumroad, activate on Telegram, done.</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <a class="btn-primary" href="#pricing">Choose a plan →</a>
+      <a class="btn-ghost" href="dashboard.html">Open Dashboard</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand">
+      <div class="foot-logo">Recruity</div>
+      <p>Reddit talent intelligence. Monitor job seekers by role, get instant Telegram alerts, hire before anyone else.</p>
+      <div class="foot-socials">
+        <a class="foot-social" href="https://x.com" target="_blank" rel="noopener" aria-label="X / Twitter">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a class="foot-social" href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h4>Product</h4>
+      <a href="#how">How it works</a>
+      <a href="#commands">Bot commands</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="dashboard.html">Dashboard</a>
+    </div>
+    <div class="foot-col">
+      <h4>From the same maker</h4>
+      <a href="https://compeddit.pages.dev" target="_blank" rel="noopener"><span class="fp-dot"></span>Compeddit</a>
+      <a href="https://buildforwho.pages.dev" target="_blank" rel="noopener"><span class="fp-dot"></span>BuildForWho</a>
+      <a href="https://nexnotes-ai.pages.dev" target="_blank" rel="noopener"><span class="fp-dot"></span>NexNotes AI</a>
+    </div>
+    <div class="foot-col">
+      <h4>Connect</h4>
+      <a href="https://x.com" target="_blank" rel="noopener">X (Twitter)</a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+  <hr class="foot-divider">
+  <div class="foot-bottom">
+    <div class="foot-bottom-left">© 2025 Recruity · Built with love in India 🇮🇳 · Reddit talent sourcing tool</div>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add("visible");obs.unobserve(e.target)} });
+},{threshold:.08,rootMargin:"0px 0px -30px 0px"});
+document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
+
+function toggleFaq(item){
+  const isOpen=item.classList.contains("open");
+  document.querySelectorAll(".faq-item").forEach(i=>{i.classList.remove("open");i.querySelector(".faq-q").setAttribute("aria-expanded","false")});
+  if(!isOpen){item.classList.add("open");item.querySelector(".faq-q").setAttribute("aria-expanded","true")}
+}
+document.querySelectorAll(".faq-q").forEach(btn=>{
+  btn.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggleFaq(btn.parentElement)}});
+});
+</script>
+</body>
+</html>
