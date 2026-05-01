@@ -440,7 +440,7 @@ body{background:var(--cream);color:var(--charcoal);font-family:'Geist',sans-seri
 
 <script>
 // ─── CONFIG ───────────────────────────────────────────────────────────────
-const WORKER_URL = "YOUR_WORKER_URL"; // ← swap this in
+const WORKER_URL = "https://jobsearch.sarush687.workers.dev"; // ← swap this in
 
 // ─── STATE ────────────────────────────────────────────────────────────────
 let chatId      = "";
@@ -528,7 +528,7 @@ async function loadDashboard() {
 async function loadStats() {
   let stats = { total: 0, by_intent: {}, by_subreddit: {}, monitors: [] };
   try {
-    if (WORKER_URL !== "YOUR_WORKER_URL") {
+    if (WORKER_URL !== "htps://jobsearch.sarush687.workers.dev") {
       const res = await fetch(WORKER_URL + "/api/stats?chat_id=" + chatId);
       if (res.ok) stats = await res.json();
     } else {
