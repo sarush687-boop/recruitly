@@ -260,14 +260,13 @@ body{background:var(--cream);color:var(--charcoal);font-family:'Geist',sans-seri
   .filter-bar{padding:10px 14px}
 }
 
-/* ── ANIMATIONS ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .alert-card{animation:fadeUp .3s ease both}
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════ LOGIN ═══════════════════ -->
+<!-- LOGIN -->
 <div id="login-screen">
   <div class="login-bg"></div>
   <div class="login-glow"></div>
@@ -281,21 +280,19 @@ body{background:var(--cream);color:var(--charcoal);font-family:'Geist',sans-seri
     <p class="login-sub">Enter your Telegram Chat ID to access your alerts.</p>
     <label class="login-label" for="chat-id-input">Your Telegram Chat ID</label>
     <input class="login-input" id="chat-id-input" type="text" placeholder="e.g. 1234567890" autocomplete="off" spellcheck="false">
-    <div class="login-error" id="login-error">⚠️ Couldn't find your account. Check your Chat ID and try again.</div>
+    <div class="login-error" id="login-error">⚠️ Couldn't connect. Check your Chat ID and try again.</div>
     <button class="login-btn" id="login-btn" onclick="doLogin()">Open Dashboard →</button>
     <p class="login-hint">
-      Don't know your Chat ID? Send <code>/dashboard</code> to <strong>@recruity_bot</strong> on Telegram.
+      Don't know your Chat ID? Send <code>/dashboard</code> to your Recruity bot on Telegram.
     </p>
   </div>
 </div>
 
-<!-- ═══════════════════ APP ═══════════════════ -->
+<!-- APP -->
 <div id="app">
-
-  <!-- TOP NAV -->
   <nav class="topnav">
     <div class="topnav-in">
-      <a class="tn-logo" href="index.html">
+      <a class="tn-logo" href="#">
         <div class="tn-mark">R</div>
         <span class="tn-word">Recruity</span>
       </a>
@@ -318,13 +315,8 @@ body{background:var(--cream);color:var(--charcoal);font-family:'Geist',sans-seri
     </div>
   </nav>
 
-  <!-- MAIN -->
-  <div class="main-wrap" id="main-content">
-
-    <!-- SIDEBAR -->
+  <div class="main-wrap">
     <aside class="sidebar">
-
-      <!-- Stats -->
       <div class="sidebar-card">
         <div class="sc-head">
           <span class="sc-title">Overview</span>
@@ -350,14 +342,13 @@ body{background:var(--cream);color:var(--charcoal);font-family:'Geist',sans-seri
         </div>
       </div>
 
-      <!-- Monitors -->
       <div class="sidebar-card">
         <div class="sc-head">
           <span class="sc-title">Active Monitors</span>
           <span class="sc-badge" id="mon-count-badge">0</span>
         </div>
         <div class="mon-list" id="monitors-list">
-          <div style="padding:12px;text-align:center;font-size:12px;color:var(--ash)">Loading monitors…</div>
+          <div style="padding:12px;text-align:center;font-size:12px;color:var(--ash)">Loading…</div>
         </div>
         <div class="mon-add-row">
           <button class="mon-add-btn" onclick="openAddModal()">
@@ -367,22 +358,15 @@ body{background:var(--cream);color:var(--charcoal);font-family:'Geist',sans-seri
         </div>
       </div>
 
-      <!-- Subreddit breakdown -->
       <div class="sidebar-card">
-        <div class="sc-head">
-          <span class="sc-title">Top Subreddits</span>
-        </div>
+        <div class="sc-head"><span class="sc-title">Top Subreddits</span></div>
         <div class="sub-list" id="subreddit-list">
           <div style="padding:8px;text-align:center;font-size:12px;color:var(--ash)">Loading…</div>
         </div>
       </div>
-
     </aside>
 
-    <!-- CONTENT -->
     <main class="content">
-
-      <!-- Filter bar -->
       <div class="filter-bar">
         <span class="fb-label">Filter:</span>
         <div class="fb-pills">
@@ -402,30 +386,27 @@ body{background:var(--cream);color:var(--charcoal);font-family:'Geist',sans-seri
         </div>
       </div>
 
-      <!-- Alerts list -->
       <div id="alerts-container">
         <div class="state-box">
           <div class="loading-dots"><div class="ld"></div><div class="ld"></div><div class="ld"></div></div>
           <div class="state-title">Loading alerts…</div>
-          <p class="state-sub">Fetching your candidate pipeline from the Sheets backend.</p>
+          <p class="state-sub">Fetching your candidate pipeline.</p>
         </div>
       </div>
 
-      <!-- Pagination -->
       <div class="pagination" id="pagination" style="display:none"></div>
-
     </main>
   </div>
 </div>
 
-<!-- ═══════════════════ ADD MONITOR MODAL ═══════════════════ -->
+<!-- ADD MONITOR MODAL -->
 <div class="modal-overlay" id="add-modal" onclick="if(event.target===this)closeAddModal()">
   <div class="modal">
     <div class="modal-title">Add monitor</div>
     <p class="modal-sub">Tell Recruity what role you're hiring for.</p>
     <label class="modal-label" for="modal-role">Role or skill</label>
-    <input class="modal-input" id="modal-role" type="text" placeholder="e.g. React developer, UX designer, data analyst">
-    <p class="modal-hint">Smart keywords are built automatically. You can refine via the Telegram bot.</p>
+    <input class="modal-input" id="modal-role" type="text" placeholder="e.g. React developer, UX designer">
+    <p class="modal-hint">Smart keywords are built automatically.</p>
     <label class="modal-label" for="modal-subs">Subreddits <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:11px;color:var(--mist)">(optional, comma-separated)</span></label>
     <input class="modal-input" id="modal-subs" type="text" placeholder="forhire, freelance, cscareerquestions">
     <div class="modal-btns">
@@ -435,47 +416,44 @@ body{background:var(--cream);color:var(--charcoal);font-family:'Geist',sans-seri
   </div>
 </div>
 
-<!-- ═══════════════════ TOASTS ═══════════════════ -->
 <div class="toast-wrap" id="toast-wrap"></div>
 
 <script>
-// ─── CONFIG ───────────────────────────────────────────────────────────────
-const WORKER_URL = "https://jobsearch.sarush687.workers.dev"; // ← swap this in
+// ─── CONFIG — only thing you ever need to change ───────────────
+const WORKER_URL = "https://jobsearch.sarush687.workers.dev";
+// ──────────────────────────────────────────────────────────────
 
-// ─── STATE ────────────────────────────────────────────────────────────────
-let chatId      = "";
-let allAlerts   = [];
-let monitors    = [];
+let chatId        = "";
+let allAlerts     = [];
+let monitors      = [];
 let currentFilter = "all";
 let currentSort   = "newest";
 let currentPage   = 0;
 const PAGE_SIZE   = 10;
 
-// ─── DEMO DATA (used when no WORKER_URL / for preview) ────────────────────
-const DEMO_ALERTS = [
-  { id: "1", role: "React developer", intent: "available_for_hire", urgency: "high", sentiment: "positive", subreddit: "forhire", author: "u/devmark_xc", score: 34, summary: "3 years React + TypeScript, just went freelance. Looking for contract work, happy to do part-time or project-based.", suggested_reply: "Hey, saw your post on r/forhire — we're actually looking for a React dev right now and your background sounds interesting. Would love to chat if you're open to it.", url: "https://reddit.com/r/forhire", timestamp: Date.now() - 7200000 },
-  { id: "2", role: "UX designer", intent: "seeking_work", urgency: "medium", sentiment: "neutral", subreddit: "UXDesign", author: "u/sarahd_ux", score: 12, summary: "Laid off from my UX role last month. 5 years of Figma, design systems, and user research. Open to full-time or contract.", suggested_reply: "Hi! We saw your post and we're searching for a UX designer right now. Your design systems experience is exactly what we need. Happy to jump on a quick call?", url: "https://reddit.com/r/UXDesign", timestamp: Date.now() - 14400000 },
-  { id: "3", role: "Data analyst", intent: "freelancer", urgency: "low", sentiment: "positive", subreddit: "freelance", author: "u/analyst_kai", score: 8, summary: "Anyone need a data analyst? I do dashboards, SQL, and Python. Built out reporting for 12 companies in the last 2 years.", suggested_reply: "Saw your post — we need someone for a data project and your background is a great fit. Interested in chatting?", url: "https://reddit.com/r/freelance", timestamp: Date.now() - 21600000 },
-  { id: "4", role: "React developer", intent: "new_to_field", urgency: "low", sentiment: "positive", subreddit: "cscareerquestions", author: "u/junior_dev_2025", score: 5, summary: "Just finished bootcamp, looking for junior React positions or internships. Strong in HTML/CSS/JS, learning TypeScript.", suggested_reply: "", url: "https://reddit.com/r/cscareerquestions", timestamp: Date.now() - 36000000 },
-  { id: "5", role: "Copywriter", intent: "available_for_hire", urgency: "high", sentiment: "positive", subreddit: "forhire", author: "u/words_by_priya", score: 22, summary: "Copywriter with 6 years of SaaS and startup experience. Available for full-time or freelance. Past clients: 3 Series B startups.", suggested_reply: "Hi! We caught your post and we're hiring a copywriter — your SaaS experience is super relevant. Got 15 min this week?", url: "https://reddit.com/r/forhire", timestamp: Date.now() - 43200000 },
-  { id: "6", role: "Data analyst", intent: "seeking_work", urgency: "medium", sentiment: "neutral", subreddit: "datascience", author: "u/tableau_tom", score: 9, summary: "SQL + Tableau + Python. Currently job hunting after company restructure. 4 YOE in fintech analytics.", suggested_reply: "Hey, noticed your post — we have an analytics role open that would be a great fit. Would love to connect!", url: "https://reddit.com/r/datascience", timestamp: Date.now() - 86400000 },
-];
-
-const DEMO_MONITORS = [
-  { role: "React developer", count: 2 },
-  { role: "UX designer", count: 1 },
-  { role: "Data analyst", count: 2 },
-  { role: "Copywriter", count: 1 },
-];
-
-// ─── LOGIN ────────────────────────────────────────────────────────────────
-function doLogin() {
+// ─── LOGIN ────────────────────────────────────────────────────
+async function doLogin() {
   const val = document.getElementById("chat-id-input").value.trim();
   if (!val) { shakeInput(); return; }
-  chatId = val;
+
+  const btn = document.getElementById("login-btn");
+  btn.textContent = "Connecting…";
+  btn.disabled = true;
   document.getElementById("login-error").style.display = "none";
-  document.getElementById("login-btn").textContent = "Loading…";
+
+  // Verify the chat ID actually has an account
+  try {
+    const res = await fetch(WORKER_URL + "/api/stats?chat_id=" + encodeURIComponent(val));
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    // If we get here the worker responded — good enough to proceed
+  } catch (e) {
+    // Network error or worker down — still let them in, show error in dashboard
+    console.warn("Stats check failed:", e.message);
+  }
+
+  chatId = val;
   localStorage.setItem("recruity_chat_id", val);
+  btn.disabled = false;
   bootApp();
 }
 
@@ -492,26 +470,20 @@ function shakeInput() {
 
 function doLogout() {
   localStorage.removeItem("recruity_chat_id");
-  chatId = "";
-  allAlerts = [];
-  monitors  = [];
+  chatId = ""; allAlerts = []; monitors = [];
   document.getElementById("app").style.display = "none";
   document.getElementById("login-screen").style.display = "flex";
   document.getElementById("login-btn").textContent = "Open Dashboard →";
+  document.getElementById("login-btn").disabled = false;
   document.getElementById("chat-id-input").value = "";
 }
 
-// Auto-login from localStorage
 window.addEventListener("DOMContentLoaded", () => {
   const saved = localStorage.getItem("recruity_chat_id");
-  if (saved) {
-    chatId = saved;
-    document.getElementById("chat-id-input").value = saved;
-    bootApp();
-  }
+  if (saved) { chatId = saved; bootApp(); }
 });
 
-// ─── BOOT ─────────────────────────────────────────────────────────────────
+// ─── BOOT ─────────────────────────────────────────────────────
 function bootApp() {
   document.getElementById("login-screen").style.display = "none";
   document.getElementById("app").style.display = "flex";
@@ -524,74 +496,96 @@ async function loadDashboard() {
   await Promise.all([loadStats(), loadAlerts()]);
 }
 
-// ─── LOAD STATS ───────────────────────────────────────────────────────────
+// ─── LOAD STATS ───────────────────────────────────────────────
+// KV worker returns: { licensed, monitors[], total_alerts, by_role{}, high_urgency, last_alert }
+// We also compute by_intent and by_subreddit from the alerts themselves
 async function loadStats() {
-  let stats = { total: 0, by_intent: {}, by_subreddit: {}, monitors: [] };
   try {
-    if (WORKER_URL !== "htps://jobsearch.sarush687.workers.dev") {
-      const res = await fetch(WORKER_URL + "/api/stats?chat_id=" + chatId);
-      if (res.ok) stats = await res.json();
-    } else {
-      // Demo mode
-      stats.total = DEMO_ALERTS.length;
-      DEMO_ALERTS.forEach(a => {
-        stats.by_intent[a.intent] = (stats.by_intent[a.intent] || 0) + 1;
-        stats.by_subreddit[a.subreddit] = (stats.by_subreddit[a.subreddit] || 0) + 1;
-      });
-      stats.monitors = DEMO_MONITORS;
-    }
-  } catch (e) { console.warn("Stats fetch failed, using demo"); stats = getDemoStats(); }
+    const res = await fetch(WORKER_URL + "/api/stats?chat_id=" + encodeURIComponent(chatId));
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const stats = await res.json();
 
-  // Update stat pills
-  document.getElementById("total-badge").textContent = (stats.total || 0) + " alerts";
-  document.getElementById("stat-hire").textContent = stats.by_intent?.available_for_hire || 0;
-  document.getElementById("stat-seek").textContent = stats.by_intent?.seeking_work || 0;
-  document.getElementById("stat-free").textContent = stats.by_intent?.freelancer || 0;
-  document.getElementById("stat-new").textContent  = stats.by_intent?.new_to_field || 0;
+    // total_alerts is the KV field name
+    const total = stats.total_alerts || 0;
+    document.getElementById("total-badge").textContent = total + " alerts";
 
-  // Monitors
-  monitors = stats.monitors || DEMO_MONITORS;
-  renderMonitors();
+    // by_role from KV — we'll use it for monitor counts
+    monitors = (stats.monitors || []).map(m => ({
+      role: m.role,
+      count: stats.by_role ? (stats.by_role[m.role] || 0) : null
+    }));
 
-  // Subreddits
-  renderSubreddits(stats.by_subreddit || {});
+    document.getElementById("mon-count-badge").textContent = monitors.length;
+    renderMonitors();
+
+    // Stats pills — we compute these from the alert data after loadAlerts runs
+    // But set placeholder totals from high_urgency at least
+    document.getElementById("stat-hire").textContent = "—";
+    document.getElementById("stat-seek").textContent = "—";
+    document.getElementById("stat-free").textContent = "—";
+    document.getElementById("stat-new").textContent  = "—";
+
+  } catch (e) {
+    console.error("loadStats error:", e.message);
+    showToast("⚠️ Could not load stats — check worker URL", "error");
+    monitors = [];
+    renderMonitors();
+  }
 }
 
-function getDemoStats() {
-  const s = { total: DEMO_ALERTS.length, by_intent: {}, by_subreddit: {}, monitors: DEMO_MONITORS };
-  DEMO_ALERTS.forEach(a => {
-    s.by_intent[a.intent] = (s.by_intent[a.intent] || 0) + 1;
-    s.by_subreddit[a.subreddit] = (s.by_subreddit[a.subreddit] || 0) + 1;
-  });
-  return s;
-}
-
-// ─── LOAD ALERTS ──────────────────────────────────────────────────────────
+// ─── LOAD ALERTS ──────────────────────────────────────────────
 async function loadAlerts() {
   showLoadingState();
   try {
-    if (WORKER_URL !== "YOUR_WORKER_URL") {
-      const params = new URLSearchParams({ chat_id: chatId, filter: currentFilter, page: currentPage });
-      const res = await fetch(WORKER_URL + "/api/alerts?" + params);
-      if (res.ok) {
-        const data = await res.json();
-        allAlerts = data.alerts || [];
-      } else { allAlerts = DEMO_ALERTS; }
-    } else {
-      allAlerts = DEMO_ALERTS;
+    const params = new URLSearchParams({
+      chat_id: chatId,
+      filter: "all",   // always fetch all, filter client-side
+      page: 0,
+      role: ""
+    });
+    const res = await fetch(WORKER_URL + "/api/alerts?" + params);
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+    allAlerts = data.alerts || [];
+
+    // Now compute intent stats from actual alerts
+    const byIntent = {};
+    const bySub    = {};
+    for (const a of allAlerts) {
+      byIntent[a.intent] = (byIntent[a.intent] || 0) + 1;
+      if (a.subreddit) bySub[a.subreddit] = (bySub[a.subreddit] || 0) + 1;
     }
-  } catch (e) { allAlerts = DEMO_ALERTS; }
+    document.getElementById("stat-hire").textContent = byIntent["available_for_hire"] || 0;
+    document.getElementById("stat-seek").textContent = byIntent["seeking_work"]       || 0;
+    document.getElementById("stat-free").textContent = byIntent["freelancer"]         || 0;
+    document.getElementById("stat-new").textContent  = byIntent["new_to_field"]       || 0;
+    document.getElementById("total-badge").textContent = allAlerts.length + " alerts";
+
+    renderSubreddits(bySub);
+
+  } catch (e) {
+    console.error("loadAlerts error:", e.message);
+    allAlerts = [];
+    document.getElementById("alerts-container").innerHTML = `
+      <div class="state-box">
+        <div class="state-icon">⚠️</div>
+        <div class="state-title">Could not load alerts</div>
+        <p class="state-sub">Make sure your worker is deployed and the RECRUITY_KV binding is set. Check <code>WORKER_URL</code> in the dashboard HTML.<br><br>Error: ${esc(e.message)}</p>
+      </div>`;
+    return;
+  }
   renderAlerts();
 }
 
-// ─── RENDER ALERTS ────────────────────────────────────────────────────────
+// ─── RENDER ALERTS ────────────────────────────────────────────
 function renderAlerts() {
-  let filtered = currentFilter === "all" ? [...allAlerts] : allAlerts.filter(a => a.intent === currentFilter);
+  let filtered = currentFilter === "all"
+    ? [...allAlerts]
+    : allAlerts.filter(a => a.intent === currentFilter);
 
-  // Sort
   if (currentSort === "score")   filtered.sort((a, b) => (b.score || 0) - (a.score || 0));
   if (currentSort === "urgency") filtered.sort((a, b) => urgVal(b.urgency) - urgVal(a.urgency));
-  if (currentSort === "newest")  filtered.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+  if (currentSort === "newest")  filtered.sort((a, b) => (b.savedAt || 0) - (a.savedAt || 0));
 
   document.getElementById("shown-count").textContent = filtered.length + " shown";
 
@@ -601,53 +595,49 @@ function renderAlerts() {
       <div class="state-box">
         <div class="state-icon">🔍</div>
         <div class="state-title">No alerts yet</div>
-        <p class="state-sub">Recruity scans Reddit every hour. Try adding a monitor or running a manual check with the "Scan now" button.</p>
+        <p class="state-sub">Recruity scans Reddit every hour. Add a monitor via the bot, then hit "Scan now" or wait for the cron to fire.</p>
       </div>`;
     document.getElementById("pagination").style.display = "none";
     return;
   }
 
-  // Paginate
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
-  const page = Math.min(currentPage, totalPages - 1);
+  const page = Math.min(currentPage, Math.max(0, totalPages - 1));
   const slice = filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
 
   container.innerHTML = '<div class="alerts-list" id="alerts-list"></div>';
   const list = document.getElementById("alerts-list");
-  slice.forEach((alert, i) => {
-    const card = buildAlertCard(alert, i);
-    list.appendChild(card);
-  });
-
+  slice.forEach((alert, i) => list.appendChild(buildAlertCard(alert, i)));
   renderPagination(totalPages, page);
 }
 
 function buildAlertCard(a, i) {
   const intentMap = {
-    available_for_hire: { label: "🙋 For hire", cls: "ib-hire", stripe: "stripe-hire" },
+    available_for_hire: { label: "🙋 For hire",    cls: "ib-hire", stripe: "stripe-hire" },
     seeking_work:       { label: "🔍 Seeking work", cls: "ib-seek", stripe: "stripe-seek" },
-    freelancer:         { label: "💼 Freelancer", cls: "ib-free", stripe: "stripe-free" },
-    new_to_field:       { label: "🎓 New to field", cls: "ib-new", stripe: "stripe-new" },
-    general:            { label: "📢 General", cls: "ib-gen", stripe: "stripe-gen" },
+    freelancer:         { label: "💼 Freelancer",   cls: "ib-free", stripe: "stripe-free" },
+    new_to_field:       { label: "🎓 New to field", cls: "ib-new",  stripe: "stripe-new"  },
+    general:            { label: "📢 General",      cls: "ib-gen",  stripe: "stripe-gen"  },
   };
-  const im = intentMap[a.intent] || intentMap.general;
-  const urgCls = { high: "urg-high", medium: "urg-medium", low: "urg-low" }[a.urgency] || "urg-low";
-  const ts = a.timestamp ? timeAgo(a.timestamp) : "recently";
-  const score = a.score || 0;
+  const im     = intentMap[a.intent] || intentMap.general;
+  const ts     = a.savedAt ? timeAgo(a.savedAt) : "recently";
+  const score  = a.score || 0;
+  // Safely escape suggested_reply for use in onclick attribute
+  const safeReply = (a.suggested_reply || "").replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\n/g," ");
 
   const card = document.createElement("div");
   card.className = "alert-card";
   card.style.animationDelay = (i * 0.04) + "s";
-  card.dataset.id = a.id;
   card.innerHTML = `
     <div class="ac-stripe ${im.stripe}"></div>
     <div class="ac-main" onclick="toggleCard(this.parentElement)">
       <div>
         <div class="ac-intent-badge ${im.cls}">${im.label}</div>
-        ${a.urgency === "high" ? '<div class="ac-urgency urg-high" style="margin-top:6px">🚨 HIGH</div>' : a.urgency === "medium" ? '<div class="ac-urgency urg-medium" style="margin-top:6px">⚠️ MEDIUM</div>' : ""}
+        ${a.urgency === "high"   ? '<div class="ac-urgency urg-high"   style="margin-top:6px">🚨 HIGH</div>'   : ""}
+        ${a.urgency === "medium" ? '<div class="ac-urgency urg-medium" style="margin-top:6px">⚠️ MEDIUM</div>' : ""}
       </div>
       <div class="ac-body">
-        <div class="ac-title">${esc(a.summary || a.title || "Candidate post")}</div>
+        <div class="ac-title">${esc(a.summary || "Candidate post")}</div>
         <div class="ac-meta">
           <div class="ac-meta-item">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -670,36 +660,36 @@ function buildAlertCard(a, i) {
           <div class="ac-score-l">Reddit score</div>
         </div>
         <div class="ac-actions" onclick="event.stopPropagation()">
-          <a class="ac-btn ac-btn-view" href="${a.url || '#'}" target="_blank" rel="noopener">
+          <a class="ac-btn ac-btn-view" href="${esc(a.url || '#')}" target="_blank" rel="noopener">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             View
           </a>
-          ${a.suggested_reply ? `<button class="ac-btn ac-btn-copy" onclick="copyOutreach('${a.id}','${a.suggested_reply.replace(/'/g,"\\'")}',this)">
+          ${safeReply ? `<button class="ac-btn ac-btn-copy" onclick="copyText('${safeReply}',this)">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
             Copy outreach
           </button>` : ""}
         </div>
       </div>
     </div>
-    ${a.suggested_reply ? `
+    ${safeReply ? `
     <div class="ac-detail">
       <div class="acd-inner">
         <div class="acd-section">
           <h4>💬 Suggested outreach message</h4>
           <div class="acd-outreach">
-            <div class="acd-outreach-text">${esc(a.suggested_reply)}</div>
+            <div class="acd-outreach-text">${esc(a.suggested_reply || "")}</div>
           </div>
-          <button class="acd-copy-btn" onclick="copyOutreach('${a.id}','${a.suggested_reply.replace(/'/g,"\\'")}',this)">Copy message</button>
+          <button class="acd-copy-btn" onclick="copyText('${safeReply}',this)">Copy message</button>
         </div>
         <div class="acd-section">
           <h4>📊 Post details</h4>
-          <div class="acd-stat-row"><span class="acd-stat-key">Intent</span><span class="acd-stat-val">${esc(a.intent || "—")}</span></div>
-          <div class="acd-stat-row"><span class="acd-stat-key">Urgency</span><span class="acd-stat-val">${esc(a.urgency || "—")}</span></div>
-          <div class="acd-stat-row"><span class="acd-stat-key">Sentiment</span><span class="acd-stat-val">${esc(a.sentiment || "—")}</span></div>
-          <div class="acd-stat-row"><span class="acd-stat-key">Subreddit</span><span class="acd-stat-val">r/${esc(a.subreddit || "—")}</span></div>
-          <div class="acd-stat-row"><span class="acd-stat-key">Author</span><span class="acd-stat-val">${esc(a.author || "—")}</span></div>
+          <div class="acd-stat-row"><span class="acd-stat-key">Intent</span><span class="acd-stat-val">${esc(a.intent||"—")}</span></div>
+          <div class="acd-stat-row"><span class="acd-stat-key">Urgency</span><span class="acd-stat-val">${esc(a.urgency||"—")}</span></div>
+          <div class="acd-stat-row"><span class="acd-stat-key">Sentiment</span><span class="acd-stat-val">${esc(a.sentiment||"—")}</span></div>
+          <div class="acd-stat-row"><span class="acd-stat-key">Subreddit</span><span class="acd-stat-val">r/${esc(a.subreddit||"—")}</span></div>
+          <div class="acd-stat-row"><span class="acd-stat-key">Author</span><span class="acd-stat-val">${esc(a.author||"—")}</span></div>
           <div class="acd-stat-row"><span class="acd-stat-key">Reddit score</span><span class="acd-stat-val">${score}</span></div>
-          <div class="acd-stat-row"><span class="acd-stat-key">Posted</span><span class="acd-stat-val">${ts}</span></div>
+          <div class="acd-stat-row"><span class="acd-stat-key">Saved</span><span class="acd-stat-val">${ts}</span></div>
         </div>
       </div>
     </div>` : ""}
@@ -713,39 +703,31 @@ function toggleCard(card) {
   if (!was) card.classList.add("expanded");
 }
 
-// ─── PAGINATION ───────────────────────────────────────────────────────────
+// ─── PAGINATION ───────────────────────────────────────────────
 function renderPagination(total, current) {
   const pg = document.getElementById("pagination");
   if (total <= 1) { pg.style.display = "none"; return; }
   pg.style.display = "flex";
   pg.innerHTML = "";
-
   const prev = document.createElement("button");
-  prev.className = "pg-btn";
-  prev.innerHTML = "←";
-  prev.disabled = current === 0;
+  prev.className = "pg-btn"; prev.innerHTML = "←"; prev.disabled = current === 0;
   prev.onclick = () => { currentPage = current - 1; renderAlerts(); };
   pg.appendChild(prev);
-
   const info = document.createElement("span");
-  info.className = "pg-info";
-  info.textContent = "Page " + (current + 1) + " of " + total;
+  info.className = "pg-info"; info.textContent = "Page " + (current+1) + " of " + total;
   pg.appendChild(info);
-
   const next = document.createElement("button");
-  next.className = "pg-btn";
-  next.innerHTML = "→";
-  next.disabled = current >= total - 1;
+  next.className = "pg-btn"; next.innerHTML = "→"; next.disabled = current >= total - 1;
   next.onclick = () => { currentPage = current + 1; renderAlerts(); };
   pg.appendChild(next);
 }
 
-// ─── MONITORS ─────────────────────────────────────────────────────────────
+// ─── MONITORS ─────────────────────────────────────────────────
 function renderMonitors() {
   const list = document.getElementById("monitors-list");
   document.getElementById("mon-count-badge").textContent = monitors.length;
   if (!monitors.length) {
-    list.innerHTML = '<div style="padding:12px;text-align:center;font-size:12px;color:var(--ash)">No monitors yet. Add one below.</div>';
+    list.innerHTML = '<div style="padding:12px;text-align:center;font-size:12px;color:var(--ash)">No monitors yet. Add one below or use /monitor in Telegram.</div>';
     return;
   }
   list.innerHTML = "";
@@ -767,23 +749,23 @@ function filterByRole(role, el) {
   if (activeRoleFilter === role) {
     activeRoleFilter = null;
     document.querySelectorAll(".mon-item").forEach(i => i.classList.remove("active"));
-    allAlerts = [...(WORKER_URL !== "YOUR_WORKER_URL" ? allAlerts : DEMO_ALERTS)];
   } else {
     activeRoleFilter = role;
     document.querySelectorAll(".mon-item").forEach(i => i.classList.remove("active"));
     el.classList.add("active");
   }
+  // Re-filter allAlerts by role
   renderAlerts();
 }
 
-// ─── SUBREDDITS ───────────────────────────────────────────────────────────
+// ─── SUBREDDITS ───────────────────────────────────────────────
 function renderSubreddits(bySubreddit) {
   const list = document.getElementById("subreddit-list");
-  const entries = Object.entries(bySubreddit).sort((a, b) => b[1] - a[1]).slice(0, 6);
-  if (!entries.length) { list.innerHTML = '<div style="padding:8px;font-size:12px;color:var(--ash)">No data yet.</div>'; return; }
+  const entries = Object.entries(bySubreddit).sort((a,b)=>b[1]-a[1]).slice(0,6);
+  if (!entries.length) { list.innerHTML='<div style="padding:8px;font-size:12px;color:var(--ash)">No data yet.</div>'; return; }
   const max = entries[0][1];
   list.innerHTML = "";
-  entries.forEach(([sub, count]) => {
+  entries.forEach(([sub,count]) => {
     const row = document.createElement("div");
     row.className = "sub-row";
     row.innerHTML = `
@@ -795,21 +777,17 @@ function renderSubreddits(bySubreddit) {
   });
 }
 
-// ─── FILTERS ──────────────────────────────────────────────────────────────
+// ─── FILTERS ──────────────────────────────────────────────────
 function setFilter(f, el) {
-  currentFilter = f;
-  currentPage   = 0;
+  currentFilter = f; currentPage = 0;
   document.querySelectorAll(".fb-pill").forEach(p => p.classList.remove("active"));
   el.classList.add("active");
   renderAlerts();
 }
 
-function setSort(s) {
-  currentSort = s;
-  renderAlerts();
-}
+function setSort(s) { currentSort = s; renderAlerts(); }
 
-// ─── ADD MONITOR ──────────────────────────────────────────────────────────
+// ─── ADD MONITOR ──────────────────────────────────────────────
 function openAddModal() { document.getElementById("add-modal").classList.add("show"); document.getElementById("modal-role").focus(); }
 function closeAddModal() { document.getElementById("add-modal").classList.remove("show"); }
 
@@ -817,67 +795,59 @@ async function addMonitor() {
   const role = document.getElementById("modal-role").value.trim();
   const subs = document.getElementById("modal-subs").value.trim();
   if (!role) { document.getElementById("modal-role").focus(); return; }
-  const subreddits = subs ? subs.split(",").map(s => s.trim().replace(/^r\//, "")).filter(Boolean) : [];
+  const subreddits = subs ? subs.split(",").map(s=>s.trim().replace(/^r\//,"")).filter(Boolean) : [];
   closeAddModal();
   try {
-    if (WORKER_URL !== "YOUR_WORKER_URL") {
-      await fetch(WORKER_URL + "/api/add-monitor", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chat_id: chatId, role, subreddits }),
-      });
-    } else {
-      // Demo
-      monitors.push({ role, count: 0 });
-    }
-    monitors.push({ role, count: 0 });
-    renderMonitors();
+    const res = await fetch(WORKER_URL + "/api/add-monitor", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chat_id: chatId, role, subreddits }),
+    });
+    if (!res.ok) throw new Error("HTTP " + res.status);
     showToast("✅ Monitor added for "" + role + """, "success");
     document.getElementById("modal-role").value = "";
     document.getElementById("modal-subs").value = "";
+    // Reload to reflect new monitor
+    await loadStats();
   } catch (e) {
-    showToast("❌ Failed to add monitor", "error");
+    showToast("❌ Failed to add monitor: " + e.message, "error");
   }
 }
 
-// ─── MANUAL RUN ───────────────────────────────────────────────────────────
+// ─── MANUAL SCAN ──────────────────────────────────────────────
 async function runManualCheck() {
   const btn = document.getElementById("run-btn");
   btn.classList.add("running");
   btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Scanning…`;
-  showToast("🔍 Running Reddit scan…");
+  showToast("🔍 Refreshing dashboard…");
   try {
-    if (WORKER_URL !== "YOUR_WORKER_URL") {
-      // Could call a manual poll endpoint if added
-    }
-    await new Promise(r => setTimeout(r, 2500));
     await loadDashboard();
-    showToast("✅ Scan complete! Dashboard refreshed.", "success");
+    showToast("✅ Dashboard refreshed.", "success");
   } catch (e) {
-    showToast("❌ Scan failed", "error");
+    showToast("❌ Refresh failed", "error");
   }
   btn.classList.remove("running");
   btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Scan now`;
 }
 
-// ─── OUTREACH COPY ────────────────────────────────────────────────────────
-function copyOutreach(id, text, btn) {
+// ─── COPY ─────────────────────────────────────────────────────
+function copyText(text, btn) {
   navigator.clipboard.writeText(text).then(() => {
     const orig = btn.innerHTML;
     btn.classList.add("copied");
     btn.textContent = "✓ Copied!";
-    showToast("✅ Outreach message copied!", "success");
+    showToast("✅ Copied to clipboard!", "success");
     setTimeout(() => { btn.classList.remove("copied"); btn.innerHTML = orig; }, 2000);
   });
 }
 
-// ─── UTILS ────────────────────────────────────────────────────────────────
+// ─── UTILS ────────────────────────────────────────────────────
 function showLoadingState() {
   document.getElementById("alerts-container").innerHTML = `
     <div class="state-box">
       <div class="loading-dots"><div class="ld"></div><div class="ld"></div><div class="ld"></div></div>
       <div class="state-title">Fetching alerts…</div>
-      <p class="state-sub">Connecting to your Sheets backend.</p>
+      <p class="state-sub">Pulling from Cloudflare KV.</p>
     </div>`;
 }
 
@@ -887,22 +857,22 @@ function showToast(msg, type) {
   t.className = "toast" + (type ? " " + type : "");
   t.textContent = msg;
   wrap.appendChild(t);
-  requestAnimationFrame(() => { requestAnimationFrame(() => { t.classList.add("show"); }); });
+  requestAnimationFrame(() => requestAnimationFrame(() => t.classList.add("show")));
   setTimeout(() => { t.classList.remove("show"); setTimeout(() => t.remove(), 350); }, 3000);
 }
 
 function esc(s) {
-  return String(s || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 }
 
-function urgVal(u) { return { high: 3, medium: 2, low: 1 }[u] || 0; }
+function urgVal(u) { return {high:3,medium:2,low:1}[u]||0; }
 
 function timeAgo(ts) {
   const d = Date.now() - ts;
-  if (d < 60000)   return "just now";
-  if (d < 3600000) return Math.floor(d/60000) + "m ago";
-  if (d < 86400000)return Math.floor(d/3600000) + "h ago";
-  return Math.floor(d/86400000) + "d ago";
+  if (d < 60000)    return "just now";
+  if (d < 3600000)  return Math.floor(d/60000)+"m ago";
+  if (d < 86400000) return Math.floor(d/3600000)+"h ago";
+  return Math.floor(d/86400000)+"d ago";
 }
 </script>
 </body>
