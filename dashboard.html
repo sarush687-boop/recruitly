@@ -613,76 +613,46 @@ function renderAlerts() {
 
 function buildAlertCard(a, i) {
   const intentMap = {
-    available_for_hire: { label: "🙋 For hire",    cls: "ib-hire", stripe: "stripe-hire" },
-    seeking_work:       { label: "🔍 Seeking work", cls: "ib-seek", stripe: "stripe-seek" },
-    freelancer:         { label: "💼 Freelancer",   cls: "ib-free", stripe: "stripe-free" },
-    new_to_field:       { label: "🎓 New to field", cls: "ib-new",  stripe: "stripe-new"  },
-    general:            { label: "📢 General",      cls: "ib-gen",  stripe: "stripe-gen"  },
+    available_for_hire: { label: "For hire",    emoji: "🙋", cls: "ib-hire", stripe: "stripe-hire" },
+    seeking_work:       { label: "Seeking work", emoji: "🔍", cls: "ib-seek", stripe: "stripe-seek" },
+    freelancer:         { label: "Freelancer",   emoji: "💼", cls: "ib-free", stripe: "stripe-free" },
+    new_to_field:       { label: "New to field", emoji: "🎓", cls: "ib-new",  stripe: "stripe-new"  },
+    general:            { label: "General",      emoji: "📢", cls: "ib-gen",  stripe: "stripe-gen"  },
   };
-  const im     = intentMap[a.intent] || intentMap.general;
-  const ts     = a.savedAt ? timeAgo(a.savedAt) : "recently";
-  const score  = a.score || 0;
-  // Safely escape suggested_reply for use in onclick attribute
-  const safeReply = (a.suggested_reply || "").replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\n/g," ");
+  const im    = intentMap[a.intent] || intentMap.general;
+  const ts    = a.savedAt ? timeAgo(a.savedAt) : "recently";
+  const score = a.score || 0;
 
   const card = document.createElement("div");
   card.className = "alert-card";
   card.style.animationDelay = (i * 0.04) + "s";
-  card.innerHTML = `
-    <div class="ac-stripe ${im.stripe}"></div>
-    <div class="ac-main" onclick="toggleCard(this.parentElement)">
-      <div>
-        <div class="ac-intent-badge ${im.cls}">${im.label}</div>
-        ${a.urgency === "high"   ? '<div class="ac-urgency urg-high"   style="margin-top:6px">🚨 HIGH</div>'   : ""}
-        ${a.urgency === "medium" ? '<div class="ac-urgency urg-medium" style="margin-top:6px">⚠️ MEDIUM</div>' : ""}
-      </div>
-      <div class="ac-body">
-        <div class="ac-title">${esc(a.summary || "Candidate post")}</div>
-        <div class="ac-meta">
-          <div class="ac-meta-item">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            r/${esc(a.subreddit || "unknown")}
-          </div>
-          <div class="ac-meta-item">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            ${esc(a.author || "unknown")}
-          </div>
-          <div class="ac-meta-item">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            ${ts}
-          </div>
-          ${a.role ? `<div class="ac-meta-item" style="background:var(--paper);border:1px solid var(--stone);padding:1px 7px;border-radius:20px;font-weight:600;">${esc(a.role)}</div>` : ""}
-        </div>
-      </div>
-      <div class="ac-right">
-        <div>
-          <div class="ac-score">${score}</div>
-          <div class="ac-score-l">Reddit score</div>
-        </div>
-        <div class="ac-actions" onclick="event.stopPropagation()">
-          <a class="ac-btn ac-btn-view" href="${esc(a.url || '#')}" target="_blank" rel="noopener">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            View
-          </a>
-          ${safeReply ? `<button class="ac-btn ac-btn-copy" onclick="copyText('${safeReply}',this)">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            Copy outreach
-          </button>` : ""}
-        </div>
-      </div>
-    </div>
-    ${safeReply ? `
+  // Store reply on the element so no inline escaping needed
+  if (a.suggested_reply) card._reply = a.suggested_reply;
+
+  const urgBadge = a.urgency === "high"
+    ? '<div class="ac-urgency urg-high" style="margin-top:6px">HIGH</div>'
+    : a.urgency === "medium"
+    ? '<div class="ac-urgency urg-medium" style="margin-top:6px">MED</div>'
+    : "";
+
+  const rolePill = a.role
+    ? '<div class="ac-meta-item" style="background:var(--paper);border:1px solid var(--stone);padding:1px 7px;border-radius:20px;font-weight:600;">' + esc(a.role) + '</div>'
+    : "";
+
+  const copyBtn = a.suggested_reply
+    ? '<button class="ac-btn ac-btn-copy copy-btn">Copy outreach</button>'
+    : "";
+
+  const detailBlock = a.suggested_reply ? `
     <div class="ac-detail">
       <div class="acd-inner">
         <div class="acd-section">
-          <h4>💬 Suggested outreach message</h4>
-          <div class="acd-outreach">
-            <div class="acd-outreach-text">${esc(a.suggested_reply || "")}</div>
-          </div>
-          <button class="acd-copy-btn" onclick="copyText('${safeReply}',this)">Copy message</button>
+          <h4>Suggested outreach message</h4>
+          <div class="acd-outreach"><div class="acd-outreach-text">${esc(a.suggested_reply)}</div></div>
+          <button class="acd-copy-btn copy-btn">Copy message</button>
         </div>
         <div class="acd-section">
-          <h4>📊 Post details</h4>
+          <h4>Post details</h4>
           <div class="acd-stat-row"><span class="acd-stat-key">Intent</span><span class="acd-stat-val">${esc(a.intent||"—")}</span></div>
           <div class="acd-stat-row"><span class="acd-stat-key">Urgency</span><span class="acd-stat-val">${esc(a.urgency||"—")}</span></div>
           <div class="acd-stat-row"><span class="acd-stat-key">Sentiment</span><span class="acd-stat-val">${esc(a.sentiment||"—")}</span></div>
@@ -692,8 +662,51 @@ function buildAlertCard(a, i) {
           <div class="acd-stat-row"><span class="acd-stat-key">Saved</span><span class="acd-stat-val">${ts}</span></div>
         </div>
       </div>
-    </div>` : ""}
+    </div>` : "";
+
+  card.innerHTML = `
+    <div class="ac-stripe ${im.stripe}"></div>
+    <div class="ac-main toggle-card">
+      <div>
+        <div class="ac-intent-badge ${im.cls}">${im.emoji} ${im.label}</div>
+        ${urgBadge}
+      </div>
+      <div class="ac-body">
+        <div class="ac-title">${esc(a.summary || "Candidate post")}</div>
+        <div class="ac-meta">
+          <div class="ac-meta-item">r/${esc(a.subreddit || "unknown")}</div>
+          <div class="ac-meta-item">${esc(a.author || "unknown")}</div>
+          <div class="ac-meta-item">${ts}</div>
+          ${rolePill}
+        </div>
+      </div>
+      <div class="ac-right">
+        <div>
+          <div class="ac-score">${score}</div>
+          <div class="ac-score-l">Reddit score</div>
+        </div>
+        <div class="ac-actions">
+          <a class="ac-btn ac-btn-view" href="${esc(a.url || '#')}" target="_blank" rel="noopener">View</a>
+          ${copyBtn}
+        </div>
+      </div>
+    </div>
+    ${detailBlock}
   `;
+
+  // Attach events cleanly - no inline onclick escaping
+  card.querySelector(".toggle-card").addEventListener("click", () => toggleCard(card));
+  card.querySelectorAll(".copy-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      copyText(card._reply || "", btn);
+    });
+  });
+  if (a.url) {
+    const viewBtn = card.querySelector(".ac-btn-view");
+    if (viewBtn) viewBtn.addEventListener("click", e => e.stopPropagation());
+  }
+
   return card;
 }
 
@@ -804,7 +817,7 @@ async function addMonitor() {
       body: JSON.stringify({ chat_id: chatId, role, subreddits }),
     });
     if (!res.ok) throw new Error("HTTP " + res.status);
-    showToast("✅ Monitor added for "" + role + """, "success");
+    showToast('Monitor added for ' + role, 'success');
     document.getElementById("modal-role").value = "";
     document.getElementById("modal-subs").value = "";
     // Reload to reflect new monitor
