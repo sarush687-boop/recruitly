@@ -92,6 +92,25 @@ h1 em{color:var(--accent);font-style:italic}
 .demo-text{font-size:13px;color:var(--charcoal);line-height:1.5;flex:1}
 .demo-sub{font-size:11px;font-family:'Geist Mono',monospace;color:var(--ash);margin-top:4px}
 
+/* ── VIDEO ── */
+.video-wrap{max-width:860px;margin:48px auto 0;padding:0 32px}
+.video-card{background:var(--ink);border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;box-shadow:var(--sh-lg);position:relative}
+.video-label{text-align:center;padding:20px 20px 0;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,249,247,.35)}
+.video-title{text-align:center;padding:6px 20px 16px;font-family:'Instrument Serif',serif;font-size:22px;color:var(--cream);letter-spacing:-.02em}
+.video-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
+.video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+
+/* ── TELEGRAM BANNER ── */
+.tg-banner{max-width:860px;margin:20px auto 0;padding:0 32px}
+.tg-inner{background:linear-gradient(135deg,#229ED9 0%,#1a7fad 100%);border-radius:14px;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.tg-text{display:flex;align-items:center;gap:12px}
+.tg-icon{font-size:26px;line-height:1}
+.tg-copy{color:#fff}
+.tg-copy strong{display:block;font-size:15px;font-weight:600;letter-spacing:-.01em}
+.tg-copy span{font-size:13px;opacity:.85}
+.tg-btn{background:#fff;color:#1a7fad;padding:10px 20px;border-radius:9px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;transition:all .15s;flex-shrink:0}
+.tg-btn:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.15)}
+
 /* ── MARQUEE ── */
 .marquee-wrap{overflow:hidden;border-top:1px solid var(--stone);border-bottom:1px solid var(--stone);padding:12px 0;background:var(--paper);margin-top:60px}
 .marquee-track{display:flex;animation:marquee 32s linear infinite;width:max-content}
@@ -340,7 +359,7 @@ footer{background:var(--ink);color:var(--cream);padding:0}
     <p class="hero-sub fu d2">Redcruit monitors Reddit 24/7 for people actively seeking work in roles you're hiring for — and alerts you on Telegram before anyone else reaches out.</p>
     <div class="hero-btns fu d3">
       <a class="btn-primary" href="#pricing">See plans →</a>
-      <a class="btn-ghost" href="dashboard.html">Open Dashboard</a>
+      <a class="btn-ghost" href="https://t.me/Redcruit_bot" target="_blank" rel="noopener">💬 Try the Telegram bot</a>
     </div>
     <p class="hero-note fu d4">$69 one-time · License key delivered instantly</p>
   </div>
@@ -374,6 +393,31 @@ footer{background:var(--ink);color:var(--cream);padding:0}
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- VIDEO -->
+<div class="video-wrap reveal">
+  <div class="video-card">
+    <div class="video-label">See it in action</div>
+    <div class="video-title">Watch Redcruit find candidates live →</div>
+    <div class="video-embed">
+      <iframe src="https://www.youtube.com/embed/uTHIL3SK8tM" title="Redcruit demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- TELEGRAM BANNER -->
+<div class="tg-banner reveal">
+  <div class="tg-inner">
+    <div class="tg-text">
+      <div class="tg-icon">✈️</div>
+      <div class="tg-copy">
+        <strong>Everything runs through your Telegram bot</strong>
+        <span>Set roles, run scans, get candidate alerts — all in @Redcruit_bot. No app to install.</span>
+      </div>
+    </div>
+    <a class="tg-btn" href="https://t.me/Redcruit_bot" target="_blank" rel="noopener">Open in Telegram →</a>
   </div>
 </div>
 
@@ -439,7 +483,7 @@ footer{background:var(--ink);color:var(--cream);padding:0}
     <div class="flow reveal" role="list" aria-label="Redcruit flow">
       <div class="flow-step" role="listitem"><div class="flow-icon">💬</div><div class="flow-title">Telegram Bot</div><div class="flow-desc">Set the role you're hiring for</div></div>
       <div class="flow-step" role="listitem"><div class="flow-icon">🔍</div><div class="flow-title">Reddit Scan</div><div class="flow-desc">4 sources, every hour</div></div>
-      <div class="flow-step" role="listitem"><div class="flow-icon">🤖</div><div class="flow-title">Groq AI</div><div class="flow-desc">Classifies intent, filters noise</div></div>
+      <div class="flow-step" role="listitem"><div class="flow-icon">🤖</div><div class="flow-title">AI Engine</div><div class="flow-desc">Classifies intent, filters noise</div></div>
       <div class="flow-step" role="listitem"><div class="flow-icon">📊</div><div class="flow-title">Google Sheets</div><div class="flow-desc">Every alert saved automatically</div></div>
       <div class="flow-step" role="listitem"><div class="flow-icon">🔔</div><div class="flow-title">You get alerted</div><div class="flow-desc">Telegram + Dashboard</div></div>
     </div>
@@ -509,7 +553,7 @@ footer{background:var(--ink);color:var(--cream);padding:0}
       <div class="feat"><div class="feat-icon">🙋</div><h3 class="feat-title">Available for hire</h3><p class="feat-desc">Catches people explicitly advertising their skills — "open to work", "looking for clients", "just went freelance."</p></div>
       <div class="feat"><div class="feat-icon">🔍</div><h3 class="feat-title">Active job seekers</h3><p class="feat-desc">Finds people in job search mode — posting resumes, asking for referrals, or sharing their experience.</p></div>
       <div class="feat"><div class="feat-icon">💼</div><h3 class="feat-title">Freelancer sourcing</h3><p class="feat-desc">Surfaces independent contractors actively hunting for new projects in your domain.</p></div>
-      <div class="feat"><div class="feat-icon">🤖</div><h3 class="feat-title">AI noise filtering</h3><p class="feat-desc">Groq AI reads every post and discards job listings, spam, and off-topic mentions. Only real candidates get through.</p></div>
+      <div class="feat"><div class="feat-icon">🤖</div><h3 class="feat-title">AI noise filtering</h3><p class="feat-desc">AI reads every post and discards job listings, spam, and off-topic mentions. Only real candidates get through.</p></div>
       <div class="feat"><div class="feat-icon">💬</div><h3 class="feat-title">Outreach suggestions</h3><p class="feat-desc">Every alert includes a short, human-sounding message you can send to the candidate. Just paste and go.</p></div>
       <div class="feat"><div class="feat-icon">🔔</div><h3 class="feat-title">Instant Telegram alerts</h3><p class="feat-desc">Candidates hit your Telegram within the hour. No dashboard to babysit, no daily email digest to skim.</p></div>
     </div>
@@ -600,7 +644,7 @@ footer{background:var(--ink);color:var(--cream);padding:0}
           <li class="pc-feat"><span class="pc-check">✓</span>Instant Telegram alerts</li>
           <li class="pc-feat"><span class="pc-check">✓</span>Full analytics dashboard</li>
         </ul>
-        <a class="pc-btn outline" href= "https://betanodeautomations.gumroad.com/l/axubqo" target="_blank" rel="noopener">Get Lifetime — $69 →</a>
+        <a class="pc-btn outline" href="https://betanodeautomations.gumroad.com/l/axubqo" target="_blank" rel="noopener">Get Lifetime — $69 →</a>
         <p class="pc-note">One payment via Gumroad · License key emailed instantly</p>
       </div>
       <div class="pricing-card dark">
@@ -666,7 +710,7 @@ footer{background:var(--ink);color:var(--cream);padding:0}
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this.parentElement)"><span>How does it know who's a real job seeker vs noise?</span><span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Every post gets read by Groq's LLaMA 70B model. It classifies intent into categories: <code>available_for_hire</code>, <code>seeking_work</code>, <code>freelancer</code>, <code>new_to_field</code>, or <code>general</code>. Only the first four trigger alerts. This eliminates job listings, vague mentions, spam, and off-topic posts. You only see posts where someone is genuinely looking.</p></div>
+        <div class="faq-a"><p>Every post is read by an AI language model that classifies intent into categories: <code>available_for_hire</code>, <code>seeking_work</code>, <code>freelancer</code>, <code>new_to_field</code>, or <code>general</code>. Only the first four trigger alerts. This eliminates job listings, vague mentions, spam, and off-topic posts. You only see posts where someone is genuinely looking.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this.parentElement)"><span>How much does Redcruit cost?</span><span class="faq-icon">+</span></button>
