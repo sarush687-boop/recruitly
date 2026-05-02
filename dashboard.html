@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Redcuit Dashboard</title>
+<title>Redcruit Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -273,7 +273,7 @@ body{background:var(--cream);color:var(--charcoal);font-family:'Geist',sans-seri
   <div class="login-card">
     <div class="login-logo">
       <div class="login-mark">R</div>
-      <span class="login-word">Redcuit</span>
+      <span class="login-word">Redcruit</span>
       <span class="login-badge">Dashboard</span>
     </div>
     <div class="login-title">Welcome back.</div>
@@ -283,7 +283,7 @@ body{background:var(--cream);color:var(--charcoal);font-family:'Geist',sans-seri
     <div class="login-error" id="login-error">⚠️ Couldn't connect. Check your Chat ID and try again.</div>
     <button class="login-btn" id="login-btn" onclick="doLogin()">Open Dashboard →</button>
     <p class="login-hint">
-      Don't know your Chat ID? Send <code>/dashboard</code> to your Redcuit bot on Telegram.
+      Don't know your Chat ID? Send <code>/dashboard</code> to your Redcruit bot on Telegram.
     </p>
   </div>
 </div>
@@ -294,7 +294,7 @@ body{background:var(--cream);color:var(--charcoal);font-family:'Geist',sans-seri
     <div class="topnav-in">
       <a class="tn-logo" href="#">
         <div class="tn-mark">R</div>
-        <span class="tn-word">Redcuit</span>
+        <span class="tn-word">Redcruit</span>
       </a>
       <div class="tn-sep"></div>
       <span class="tn-title">Talent Dashboard</span>
@@ -403,7 +403,7 @@ body{background:var(--cream);color:var(--charcoal);font-family:'Geist',sans-seri
 <div class="modal-overlay" id="add-modal" onclick="if(event.target===this)closeAddModal()">
   <div class="modal">
     <div class="modal-title">Add monitor</div>
-    <p class="modal-sub">Tell Redcuit what role you're hiring for.</p>
+    <p class="modal-sub">Tell Redcruit what role you're hiring for.</p>
     <label class="modal-label" for="modal-role">Role or skill</label>
     <input class="modal-input" id="modal-role" type="text" placeholder="e.g. React developer, UX designer">
     <p class="modal-hint">Smart keywords are built automatically.</p>
@@ -452,7 +452,7 @@ async function doLogin() {
   }
 
   chatId = val;
-  localStorage.setItem("Redcuit_chat_id", val);
+  localStorage.setItem("Redcruit_chat_id", val);
   btn.disabled = false;
   bootApp();
 }
@@ -469,7 +469,7 @@ function shakeInput() {
 }
 
 function doLogout() {
-  localStorage.removeItem("Redcuit_chat_id");
+  localStorage.removeItem("Redcruit_chat_id");
   chatId = ""; allAlerts = []; monitors = [];
   document.getElementById("app").style.display = "none";
   document.getElementById("login-screen").style.display = "flex";
@@ -479,8 +479,21 @@ function doLogout() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  const saved = localStorage.getItem("Redcuit_chat_id");
-  if (saved) { chatId = saved; bootApp(); }
+  const saved = localStorage.getItem("Redcruit_chat_id");
+  if (saved) {
+    chatId = saved;
+    // Pre-fill the input in case the user wants to change it
+    document.getElementById("chat-id-input").value = saved;
+    // Show a "remembered" notice and auto-login
+    const btn = document.getElementById("login-btn");
+    btn.textContent = "Resuming session…";
+    btn.disabled = true;
+    // Show remembered badge
+    const hint = document.getElementById("login-hint");
+    hint.innerHTML = `<span style="color:rgba(250,249,247,.5)">✓ Chat ID remembered — loading your dashboard…</span>`;
+    // Small delay so the user sees the message
+    setTimeout(() => { bootApp(); }, 600);
+  }
 });
 
 // ─── BOOT ─────────────────────────────────────────────────────
@@ -570,7 +583,7 @@ async function loadAlerts() {
       <div class="state-box">
         <div class="state-icon">⚠️</div>
         <div class="state-title">Could not load alerts</div>
-        <p class="state-sub">Make sure your worker is deployed and the Redcuit_KV binding is set. Check <code>WORKER_URL</code> in the dashboard HTML.<br><br>Error: ${esc(e.message)}</p>
+        <p class="state-sub">Make sure your worker is deployed and the Redcruit_KV binding is set. Check <code>WORKER_URL</code> in the dashboard HTML.<br><br>Error: ${esc(e.message)}</p>
       </div>`;
     return;
   }
@@ -595,7 +608,7 @@ function renderAlerts() {
       <div class="state-box">
         <div class="state-icon">🔍</div>
         <div class="state-title">No alerts yet</div>
-        <p class="state-sub">Redcuit scans Reddit every hour. Add a monitor via the bot, then hit "Scan now" or wait for the cron to fire.</p>
+        <p class="state-sub">Redcruit scans Reddit every hour. Add a monitor via the bot, then hit "Scan now" or wait for the cron to fire.</p>
       </div>`;
     document.getElementById("pagination").style.display = "none";
     return;
