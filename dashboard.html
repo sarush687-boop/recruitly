@@ -481,18 +481,7 @@ function doLogout() {
 window.addEventListener("DOMContentLoaded", () => {
   const saved = localStorage.getItem("Redcruit_chat_id");
   if (saved) {
-    chatId = saved;
-    // Pre-fill the input in case the user wants to change it
     document.getElementById("chat-id-input").value = saved;
-    // Show a "remembered" notice and auto-login
-    const btn = document.getElementById("login-btn");
-    btn.textContent = "Resuming session…";
-    btn.disabled = true;
-    // Show remembered badge
-    const hint = document.getElementById("login-hint");
-    hint.innerHTML = `<span style="color:rgba(250,249,247,.5)">✓ Chat ID remembered — loading your dashboard…</span>`;
-    // Small delay so the user sees the message
-    setTimeout(() => { bootApp(); }, 600);
   }
 });
 
