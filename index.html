@@ -354,14 +354,14 @@ footer{background:var(--ink);color:var(--cream);padding:0}
   <div class="hero-dots" aria-hidden="true"></div>
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="hero-in">
-    <div class="eyebrow fu"><span class="eyebrow-dot" aria-hidden="true"></span> Reddit talent monitor · Hourly scans · Instant Telegram alerts</div>
+    <div class="eyebrow fu"><span class="eyebrow-dot" aria-hidden="true"></span> Reddit talent monitor · Hourly scans · <strong style="color:var(--accent)">2 free trial alerts</strong></div>
     <h1 id="hero-heading" class="fu d1">Your next hire is on<br>Reddit right now.<br><em>Looking for work.</em></h1>
     <p class="hero-sub fu d2">Redcruit monitors Reddit 24/7 for people actively seeking work in roles you're hiring for — and alerts you on Telegram before anyone else reaches out.</p>
     <div class="hero-btns fu d3">
       <a class="btn-primary" href="#pricing">See plans →</a>
       <a class="btn-ghost" href="https://t.me/Redcruit_bot" target="_blank" rel="noopener">💬 Try the Telegram bot</a>
     </div>
-    <p class="hero-note fu d4">$69 one-time · License key delivered instantly</p>
+    <p class="hero-note fu d4">✨ 2 free trial alerts with <code style="background:rgba(255,255,255,.12);padding:1px 6px;border-radius:4px;font-family:'Geist Mono',sans-serif;font-size:11px">/test</code> — no card needed · Then $69 one-time</p>
   </div>
 </section>
 
@@ -421,7 +421,19 @@ footer{background:var(--ink);color:var(--cream);padding:0}
   </div>
 </div>
 
-<!-- MARQUEE -->
+<!-- FREE TRIAL BANNER -->
+<div class="tg-banner reveal" style="margin-top:16px">
+  <div class="tg-inner" style="background:linear-gradient(135deg,#1a3a1a 0%,#0d2b1a 100%);border:1px solid rgba(45,122,79,.3)">
+    <div class="tg-text">
+      <div class="tg-icon">🎁</div>
+      <div class="tg-copy">
+        <strong>Try before you buy — 2 free alerts, no card needed</strong>
+        <span>Open the bot, set a role with <code style="background:rgba(255,255,255,.15);padding:1px 6px;border-radius:4px;font-family:'Geist Mono',sans-serif;font-size:11px">/monitor</code>, then run <code style="background:rgba(255,255,255,.15);padding:1px 6px;border-radius:4px;font-family:'Geist Mono',sans-serif;font-size:11px">/test</code> — get real Reddit results instantly.</span>
+      </div>
+    </div>
+    <a class="tg-btn" href="https://t.me/Redcruit_bot" target="_blank" rel="noopener" style="background:var(--green);color:#fff">Try free now →</a>
+  </div>
+</div>
 <div class="marquee-wrap" aria-hidden="true">
   <div class="marquee-track">
     <div class="mq-item"><span class="mq-dot"></span> Available for hire detection</div>
@@ -513,10 +525,18 @@ footer{background:var(--ink);color:var(--cream);padding:0}
           <div class="cmd-step"><div class="cmd-step-num">4</div><div class="cmd-step-text">Done ✓ Monitor is now active</div></div>
         </div>
       </div>
-      <div class="cmd-card">
-        <div class="cmd-top"><span class="cmd-name">/test</span><span class="cmd-tag">Use after setup</span></div>
-        <p class="cmd-desc">Runs a manual Reddit check right now — don't wait for the hourly cron. Verify it's working instantly.</p>
-        <div class="cmd-example"><span class="label">What to type</span>/test<div style="margin-top:8px;font-size:11px;color:rgba(250,249,247,.35)">Takes ~10–15 seconds. Bot replies with results or "no new posts found".</div></div>
+      <div class="cmd-card" style="border-color:rgba(45,122,79,.4);background:rgba(45,122,79,.07)">
+        <div class="cmd-top">
+          <span class="cmd-name">/test</span>
+          <span class="cmd-tag" style="background:rgba(45,122,79,.2);border-color:rgba(45,122,79,.4);color:#6fcf97">🎁 Free Trial</span>
+        </div>
+        <p class="cmd-desc">Runs a real Reddit scan right now — <strong style="color:rgba(250,249,247,.8)">get up to 2 free candidate alerts before subscribing.</strong> No card, no account needed.</p>
+        <div class="cmd-example">
+          <span class="label">How free trial works</span>
+          <div class="cmd-step"><div class="cmd-step-num" style="background:rgba(45,122,79,.3);color:#6fcf97">1</div><div class="cmd-step-text">Set a role with <code>/monitor</code> (no license needed)</div></div>
+          <div class="cmd-step"><div class="cmd-step-num" style="background:rgba(45,122,79,.3);color:#6fcf97">2</div><div class="cmd-step-text">Send <code>/test</code> — get real results in ~15 seconds</div></div>
+          <div class="cmd-step"><div class="cmd-step-num" style="background:rgba(45,122,79,.3);color:#6fcf97">3</div><div class="cmd-step-text">Up to <strong style="color:rgba(250,249,247,.85)">2 free alerts</strong> → then subscribe to keep them coming</div></div>
+        </div>
       </div>
       <div class="cmd-card">
         <div class="cmd-top"><span class="cmd-name">/list</span><span class="cmd-tag">Check active</span></div>
@@ -734,7 +754,7 @@ footer{background:var(--ink);color:var(--cream);padding:0}
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this.parentElement)"><span>Is there a free trial?</span><span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>No free tier, but the <code>/test</code> command lets you run a real Reddit scan immediately after subscribing to verify it's working. The $19/month plan cancels instantly from your Gumroad account — no emails, no support tickets. And the $69 lifetime breaks even at month 4 compared to monthly.</p></div>
+        <div class="faq-a"><p>Yes — <strong>2 free trial alerts, no card required.</strong> Open the bot, set a role with <code>/monitor</code>, then run <code>/test</code>. You'll get up to 2 real candidate alerts from a live Reddit scan — completely free, no subscription needed. Once you've seen it work, subscribe to unlock hourly automated monitoring. The $19/month plan cancels instantly from your Gumroad account — no emails, no support tickets. And the $69 lifetime breaks even at month 4 compared to monthly.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this.parentElement)"><span>How do I log into the dashboard?</span><span class="faq-icon">+</span></button>
@@ -755,10 +775,10 @@ footer{background:var(--ink);color:var(--cream);padding:0}
     <h2 id="cta-heading" style="font-family:'Instrument Serif',serif;font-size:clamp(32px,5vw,52px);color:var(--ink);letter-spacing:-.03em;line-height:1.08;margin-bottom:14px">
       Start finding candidates<br><em style="color:var(--accent)">on Reddit today.</em>
     </h2>
-    <p style="font-size:15px;color:var(--ash);margin-bottom:32px;line-height:1.7;font-weight:300">$19/month or $69 one-time. Subscribe on Gumroad, activate on Telegram, done.</p>
+    <p style="font-size:15px;color:var(--ash);margin-bottom:32px;line-height:1.7;font-weight:300">Try free — 2 real alerts with <code style="background:var(--paper);border:1px solid var(--stone);padding:1px 6px;border-radius:4px;font-family:'Geist Mono',sans-serif;font-size:13px">/test</code>, no card needed. Then $19/month or $69 one-time.</p>
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-      <a class="btn-primary" href="#pricing">Choose a plan →</a>
-      <a class="btn-ghost" href="dashboard.html">Open Dashboard</a>
+      <a class="btn-primary" href="https://t.me/Redcruit_bot" target="_blank" rel="noopener" style="background:var(--green)">🎁 Try free on Telegram →</a>
+      <a class="btn-ghost" href="#pricing">See plans</a>
     </div>
   </div>
 </section>
