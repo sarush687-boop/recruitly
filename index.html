@@ -255,7 +255,7 @@ h1 em{color:var(--accent);font-style:italic}
 .pricing-title em{color:#5ca0f0;font-style:italic}
 .pricing-sub{font-size:15px;color:rgba(250,249,247,.4);font-weight:300;margin-bottom:12px;max-width:480px;margin-left:auto;margin-right:auto}
 .pricing-free-banner{display:inline-flex;align-items:center;gap:8px;background:rgba(45,122,79,.15);border:1px solid rgba(45,122,79,.3);border-radius:10px;padding:8px 18px;margin-bottom:36px;font-size:13px;color:#6fcf97;font-weight:500}
-.pricing-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:0 auto;max-width:860px}
+.pricing-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin:0 auto;max-width:1160px}
 .pricing-card{border-radius:20px;padding:40px;position:relative;overflow:hidden;box-shadow:0 24px 80px rgba(13,11,9,.25)}
 .pricing-card.dark{background:rgba(255,255,255,.04);border:1px solid rgba(29,106,212,.25)}
 .pricing-card.light{background:var(--white);border:1px solid rgba(29,106,212,.15)}
@@ -374,7 +374,7 @@ footer{background:var(--ink);color:var(--cream);padding:0}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
 /* ── RESPONSIVE ── */
-@media(max-width:900px){.t-grid,.cost-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.t-grid,.cost-grid{grid-template-columns:repeat(2,1fr)}.pricing-cards{grid-template-columns:1fr}}
 @media(max-width:768px){
   .hiw-grid,.cmd-grid,.feats-grid{grid-template-columns:1fr}
   .feats-grid{gap:0}
@@ -802,6 +802,31 @@ footer{background:var(--ink);color:var(--cream);padding:0}
     <p class="pricing-sub">Job boards charge $300–500/month and drown you in unqualified applications. Redcruit finds you people who are already looking — for a fraction of the cost.</p>
     <div class="pricing-free-banner">🎁 Try free first — 2 real candidate alerts, no card, no commitment</div>
     <div class="pricing-cards">
+      <!-- FREE TRIAL -->
+      <div class="pricing-card" style="background:linear-gradient(160deg,#0d1f10 0%,#0a1a0d 100%);border:1.5px solid rgba(45,122,79,.45);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#2d7a4f,#6fcf97,#2d7a4f)"></div>
+        <div class="pc-popular" style="background:rgba(45,122,79,.25);border:1px solid rgba(45,122,79,.4);color:#6fcf97">🎁 No card needed</div>
+        <div class="pc-label" style="color:rgba(250,249,247,.9)">Try Free First</div>
+        <div class="pc-price" style="color:#6fcf97"><span style="font-size:32px;font-family:'Geist',sans-serif;font-weight:600;letter-spacing:-.02em">Free</span></div>
+        <div class="pc-per" style="color:rgba(250,249,247,.45)">2 real candidate alerts · zero commitment</div>
+        <div class="pc-value" style="color:#6fcf97;background:rgba(45,122,79,.15);border-color:rgba(45,122,79,.3)">See results before spending a cent</div>
+        <div class="pc-divider" style="background:rgba(45,122,79,.2)"></div>
+        <ul class="pc-feats" aria-label="Free trial features">
+          <li class="pc-feat" style="color:rgba(250,249,247,.8)"><span class="pc-check" style="color:#6fcf97">✓</span>Open the bot — no account needed</li>
+          <li class="pc-feat" style="color:rgba(250,249,247,.8)"><span class="pc-check" style="color:#6fcf97">✓</span>Set a role with <code style="background:rgba(255,255,255,.1);padding:1px 5px;border-radius:3px;font-family:'Geist Mono'">/monitor</code></li>
+          <li class="pc-feat" style="color:rgba(250,249,247,.8)"><span class="pc-check" style="color:#6fcf97">✓</span>Run <code style="background:rgba(255,255,255,.1);padding:1px 5px;border-radius:3px;font-family:'Geist Mono'">/test</code> — live Reddit scan in 15s</li>
+          <li class="pc-feat" style="color:rgba(250,249,247,.8)"><span class="pc-check" style="color:#6fcf97">✓</span>Get up to 2 real candidate alerts</li>
+          <li class="pc-feat" style="color:rgba(250,249,247,.8)"><span class="pc-check" style="color:#6fcf97">✓</span>See actual post links + outreach messages</li>
+          <li class="pc-feat" style="color:rgba(250,249,247,.45)"><span style="color:rgba(250,249,247,.25);margin-right:8px">—</span>Hourly automated scans (paid plans)</li>
+          <li class="pc-feat" style="color:rgba(250,249,247,.45)"><span style="color:rgba(250,249,247,.25);margin-right:8px">—</span>Analytics dashboard (paid plans)</li>
+        </ul>
+        <a class="pc-btn" href="https://t.me/recruitelybot" target="_blank" rel="noopener" style="background:var(--green);color:#fff;border:none;box-shadow:0 4px 18px rgba(45,122,79,.45)">🚀 Try Free on Telegram →</a>
+        <p class="pc-note" style="color:rgba(250,249,247,.35)">Opens @recruitelybot directly · No signup · No card · Ever</p>
+        <div class="pc-guarantee" style="background:rgba(45,122,79,.1);border-color:rgba(45,122,79,.25)">
+          <span class="pc-guarantee-icon">⚡</span>
+          <span class="pc-guarantee-text" style="color:rgba(250,249,247,.6)">Setup takes 2 minutes. First alert arrives in under an hour. <strong style="color:rgba(250,249,247,.85)">Judge the quality, then decide.</strong></span>
+        </div>
+      </div>
       <!-- LIFETIME -->
       <div class="pricing-card light">
         <div class="pc-label">Redcruit Lifetime</div>
